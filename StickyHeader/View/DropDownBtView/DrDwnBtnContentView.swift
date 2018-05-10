@@ -9,7 +9,7 @@ class DrDwnBtnContentView: UIView, UITableViewDelegate, UITableViewDataSource  {
     //Внутри Drop-Down меню помещается TableView
     var tableView = UITableView()
     
-    var delegate : DropDownProtocol!
+    var delegate : DropDownBtProtocol!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

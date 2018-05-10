@@ -9,7 +9,7 @@ class ViewController_2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.white
         setDropDownButton()
         
     }
@@ -23,7 +23,6 @@ class ViewController_2: UIViewController {
     func setDropDownButton(){
         
         //Конфигурация кнопки
-        //  button = dropDownBtn.init()
         //Задание внешнего вида кнопки
         button.setImage(UIImage(named: "ic_ios_place"), for: .normal)
         
@@ -35,7 +34,6 @@ class ViewController_2: UIViewController {
         
         //button Constraints
         let constraints:[NSLayoutConstraint] = [
-            
             //Расположение
             button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
@@ -46,7 +44,7 @@ class ViewController_2: UIViewController {
         NSLayoutConstraint.activate(constraints)
   
         //drop down menu options
-        button.dropView.dropDownOptions = ["Blue", "Green", "Magenta"]
+        button.dropView.dropDownOptions = ["Фотографии", "Заметки", "About it"]
         
     }
     

@@ -1,3 +1,4 @@
+
 import UIKit
 
 class CustomHeaderView: UIView {
@@ -11,13 +12,50 @@ class CustomHeaderView: UIView {
     init(frame:CGRect,title: String) {
         self.titleLabel.text = title.uppercased()
         super.init(frame: frame)
-        setUpView()
+        setBackground()
+        setTitleLabel()
+        setArticleIcon()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+///
+    func setTitleLabel() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(titleLabel)
+        
+        let titlesConstraints:[NSLayoutConstraint] = [
+            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 28), //constant - доболнительный отступ относительно equalTo
+        ]
+        NSLayoutConstraint.activate(titlesConstraints)
+        
+        titleLabel.font = UIFont.systemFont(ofSize: 15)
+        titleLabel.textAlignment = .center
+    }
+
+    func setArticleIcon() {
+        articleIcon = UIImageView()
+        articleIcon.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(articleIcon)
+        
+        let imageConstraints:[NSLayoutConstraint] = [
+            //Задание расположения
+            articleIcon.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            articleIcon.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 6),
+            //Задание размеров
+            articleIcon.widthAnchor.constraint(equalToConstant: 60),
+            articleIcon.heightAnchor.constraint(equalToConstant: 60)
+        ]
+        NSLayoutConstraint.activate(imageConstraints)
+        
+        articleIcon.image = UIImage(named: "user")
+        articleIcon.layer.cornerRadius = 10
+        articleIcon.layer.masksToBounds = true
+        articleIcon.contentMode = .scaleAspectFill
+    }
     
-    func setUpView() {
+    func setBackground() {
         self.backgroundColor = UIColor.white
         imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,39 +83,8 @@ class CustomHeaderView: UIView {
         
         colorView.backgroundColor = bgColor
         colorView.alpha = 0.6 //Уровень прозрачности
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(titleLabel)
-        
-        let titlesConstraints:[NSLayoutConstraint] = [
-            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 28), //constant - доболнительный отступ относительно equalTo
-        ]
-        NSLayoutConstraint.activate(titlesConstraints)
-        
-        titleLabel.font = UIFont.systemFont(ofSize: 15)
-        titleLabel.textAlignment = .center
-        
-        articleIcon = UIImageView()
-        articleIcon.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(articleIcon)
-        
-        let imageConstraints:[NSLayoutConstraint] = [
-            //Задание расположения
-            articleIcon.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            articleIcon.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 6),
-            //Задание размеров
-            articleIcon.widthAnchor.constraint(equalToConstant: 60),
-            articleIcon.heightAnchor.constraint(equalToConstant: 60)
-        ]
-        NSLayoutConstraint.activate(imageConstraints)
-        
-        articleIcon.image = UIImage(named: "user")
-        articleIcon.layer.cornerRadius = 10
-        articleIcon.layer.masksToBounds = true
-        articleIcon.contentMode = .scaleAspectFill
     }
-    
+///
     //Функция, увеличивающая уровень прозрачности фона
     func decrementColorAlpha(_ offset: CGFloat) {
         if self.colorView.alpha <= 1 {
@@ -91,7 +98,6 @@ class CustomHeaderView: UIView {
         if self.articleIcon.alpha >= 0 {
             let alphaOffset = max((offset - 65)/85.0, 0)
             self.articleIcon.alpha = alphaOffset
-          
         }
     }
     
@@ -108,5 +114,5 @@ class CustomHeaderView: UIView {
             self.articleIcon.alpha = alphaOffset
         }
     }
-
+///
 }

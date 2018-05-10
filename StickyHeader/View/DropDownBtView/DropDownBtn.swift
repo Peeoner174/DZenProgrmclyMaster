@@ -5,7 +5,7 @@ import UIKit
 Внешний вид Frame`a drop-down меню и его поведение(анимация)
 **/
 
-class DropDownBtn: UIButton, DropDownProtocol {
+class DropDownBtn: UIButton, DropDownBtProtocol {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

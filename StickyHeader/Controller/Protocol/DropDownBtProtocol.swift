@@ -2,7 +2,7 @@
 нажатие на ячеку меню
 **/
 
-protocol DropDownProtocol {
+protocol DropDownBtProtocol {
     func dropDownPressed()
 }
 

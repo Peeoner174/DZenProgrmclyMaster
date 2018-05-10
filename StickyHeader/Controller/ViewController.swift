@@ -1,3 +1,4 @@
+
 import UIKit
 
 class ViewController: UIViewController {
@@ -86,7 +87,7 @@ class ViewController: UIViewController {
 
 
 /**
- UIScrollViewDelegate - позволяет реагировать на операции(прокрутка, масштабирование и т.д., определенные в классе UIScrollView)
+ UIScrollViewDelegate - позволяет реагировать на операции(прокрутка, масштабирование и т.д.) определенные в классе UIScrollView
  **/
 extension ViewController:UIScrollViewDelegate {
     
@@ -138,7 +139,6 @@ extension ViewController:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! ProductCell
         let currentLastItem = products[indexPath.row]
         cell.product = currentLastItem
