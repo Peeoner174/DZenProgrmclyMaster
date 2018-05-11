@@ -22,16 +22,6 @@ class CustomHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 ///
-//    func setSegmentedControl() {
-//        segmentControl.translatesAutoresizingMaskIntoConstraints = false
-//        self.addSubview(segmentControl)
-//
-//        let titlesConstraints:[NSLayoutConstraint] = [
-//            segmentControl.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-//            segmentControl.topAnchor.constraint(equalTo: self.topAnchor, constant: 60), //constant - дополнительный отступ относительно equalTo
-//        ]
-//        NSLayoutConstraint.activate(titlesConstraints)
-//    }
     
     func setTitleLabel() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
