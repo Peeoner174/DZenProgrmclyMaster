@@ -43,6 +43,8 @@ class UserController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
+    
+    
     func setSegmentedControl() {
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
         segmentControl.tintColor = UIColor(red: 250/255, green: 97/255, blue: 80/255, alpha: 1)

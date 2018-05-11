@@ -1,27 +1,23 @@
-
 import UIKit
 
 class CustomHeaderView: UIView {
-
+    
     var imageView:UIImageView!
-    var colorView:UIView!
-    var bgColor = UIColor(red: 235/255, green: 96/255, blue: 91/255, alpha: 1)
-    var titleLabel = UILabel()
-    var articleIcon:UIImageView!
+   
     //var segmentControl = UISegmentedControl(items: ["one", "two"])
-  
+    
     init(frame:CGRect,title: String) {
         self.titleLabel.text = title.uppercased()
         super.init(frame: frame)
         setBackground()
         setTitleLabel()
         setArticleIcon()
-       // setSegmentedControl()
+        // setSegmentedControl()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-///
+    ///
     
     func setTitleLabel() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +32,7 @@ class CustomHeaderView: UIView {
         titleLabel.font = UIFont.systemFont(ofSize: 15)
         titleLabel.textAlignment = .center
     }
-
+    
     func setArticleIcon() {
         articleIcon = UIImageView()
         articleIcon.translatesAutoresizingMaskIntoConstraints = false
@@ -66,13 +62,13 @@ class CustomHeaderView: UIView {
         //Задаем background картинку
         imageView.image = UIImage(named: "userBackground")
         imageView.contentMode = .scaleAspectFill //картинка не растягивается под View, а обрезается
-        self.addSubview(imageView)
+        // self.addSubview(imageView)
         
         colorView = UIView()
         colorView.translatesAutoresizingMaskIntoConstraints = false
         colorView.backgroundColor = bgColor
         colorView.alpha = 0.6 //Уровень прозрачности
-        self.addSubview(colorView)
+        //self.addSubview(colorView)
         
         let constraints:[NSLayoutConstraint] = [
             imageView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -86,7 +82,7 @@ class CustomHeaderView: UIView {
         ]
         NSLayoutConstraint.activate(constraints)
     }
-///
+    ///
     //Функция, увеличивающая уровень прозрачности фона
     func decrementColorAlpha(_ offset: CGFloat) {
         if self.colorView.alpha <= 1 {
@@ -116,5 +112,5 @@ class CustomHeaderView: UIView {
             self.articleIcon.alpha = alphaOffset
         }
     }
-///
+    ///
 }
