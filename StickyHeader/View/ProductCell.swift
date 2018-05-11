@@ -3,7 +3,7 @@ import UIKit
 
 class ProductCell : UITableViewCell {
     let minValue = 0
-    
+      
     var productNameLabel : UILabel!
     var productDescriptionLabel : UILabel!
     var  productImage : UIImageView!
