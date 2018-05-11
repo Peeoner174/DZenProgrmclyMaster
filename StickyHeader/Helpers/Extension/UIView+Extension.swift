@@ -1,8 +1,8 @@
 
 import UIKit
 
+
 /**Позволяет более кратко описывать констрейнты **/
-//Идея этого экстеншина взята с letsbuildthatapp.com
 extension UIView {
     
     func anchor (top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?,  paddingTop: CGFloat, paddingLeft: CGFloat, paddingBottom: CGFloat, paddingRight: CGFloat, width: CGFloat, height: CGFloat, enableInsets: Bool) {
@@ -42,42 +42,3 @@ extension UIView {
     }
     
 }
-
-/**
- Настройка Tab Bara
- Наполнение контентом, обработка нажатий на элементы меню таб бара
- **/
-extension UITabBarController {
-    
-    func createNavController(vc: UIViewController, image_icon: UIImage, title: String?) -> UINavigationController {
-        let viewController = vc
-        let navController = UINavigationController(rootViewController: viewController)
-        
-        //Задание текста, иконок меню и цвета иконок(selected and unselected)
-        navController.tabBarItem.image = image_icon.tint(with: UIColor.blue)
-        navController.tabBarItem.title = title
-        navController.tabBarItem.selectedImage = image_icon.tint(with: UIColor.brown)
-        
-        return navController
-    }
-}
-
-/**
- //Изменение цвета иконок(UIImage) в коде
- **/
-extension UIImage {
-    func tint(with color: UIColor) -> UIImage {
-        
-        //Изменение цвета иконок в коде
-        var image = withRenderingMode(.alwaysTemplate)
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        color.set()
-        
-        image.draw(in: CGRect(origin: .zero, size: size))
-        image = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return image
-    }
-}
-
-

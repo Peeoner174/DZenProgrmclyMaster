@@ -16,7 +16,7 @@ class MainTabBarController: UITabBarController {
         
         //Наполнение
         let oneController = createNavController(vc: ViewController_2(), image_icon: #imageLiteral(resourceName: "ic_ios_place"), title: "123")
-        let twoController = createNavController(vc: ViewController(), image_icon: #imageLiteral(resourceName: "ic_ios_art_track"), title: "456")
+        let twoController = createNavController(vc: UserController(), image_icon: #imageLiteral(resourceName: "ic_ios_art_track"), title: "456")
         
         viewControllers = [oneController, twoController]
         

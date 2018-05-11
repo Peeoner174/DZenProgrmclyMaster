@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Так как StoryBoard не используется, нужно задать window для отображения
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        let mainVC = MainTabBarController()
+        let mainVC = LoginController()
         window?.rootViewController = mainVC
         
         // Избавиться от черной полосы под навигатион баром

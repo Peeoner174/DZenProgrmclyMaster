@@ -1,10 +1,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class UserController: UIViewController {
     
     var segmentControl = UISegmentedControl(items: ["ОБО МНЕ", "МОИ ПОЕЗДКИ"])
-
 
     let cellId = "cellId"
     var products : [Product]  = [Product]()
@@ -109,7 +108,7 @@ class ViewController: UIViewController {
 /**
  UIScrollViewDelegate - позволяет реагировать на операции(прокрутка, масштабирование и т.д.) определенные в классе UIScrollView
  **/
-extension ViewController:UIScrollViewDelegate {
+extension UserController:UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -145,11 +144,11 @@ extension ViewController:UIScrollViewDelegate {
 }
 
 
-extension ViewController:UITableViewDelegate {
+extension UserController:UITableViewDelegate {
     
 }
 
-extension ViewController:UITableViewDataSource {
+extension UserController:UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
