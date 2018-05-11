@@ -2,6 +2,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var segmentControl = UISegmentedControl(items: ["ОБО МНЕ", "МОИ ПОЕЗДКИ"])
+
 
     let cellId = "cellId"
     var products : [Product]  = [Product]()
@@ -15,8 +18,10 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         setUpHeader()
+        setSegmentedControl()
         createProductArray()
         setUpTableView()
+        
     }
 
     func setUpHeader() {
@@ -39,13 +44,28 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
+    func setSegmentedControl() {
+        segmentControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentControl.tintColor = UIColor(red: 250/255, green: 97/255, blue: 80/255, alpha: 1)
+        segmentControl.backgroundColor = UIColor.white
+        view.addSubview(segmentControl)
+        
+        let titlesConstraints:[NSLayoutConstraint] = [
+            segmentControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            segmentControl.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 6), //constant - дополнительный отступ относительно equalTo
+            segmentControl.widthAnchor.constraint(equalToConstant: 280),
+            segmentControl.heightAnchor.constraint(equalToConstant: 28)
+        ]
+        NSLayoutConstraint.activate(titlesConstraints)
+    }
+    
     func setUpTableView() {
         tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(tableView)
         
         let constraints:[NSLayoutConstraint] = [
-            tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 6),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -100,8 +120,8 @@ extension ViewController:UIScrollViewDelegate {
             headerView.incrementArticleAlpha(self.headerHeightConstraint.constant) //Картинка
             
             //Задание максимального размера header`a
-            if self.headerHeightConstraint.constant > 300{
-                self.headerHeightConstraint.constant = 300
+            if self.headerHeightConstraint.constant > 200{
+                self.headerHeightConstraint.constant = 200
             }
         
             //Когда пользователь скролит вниз

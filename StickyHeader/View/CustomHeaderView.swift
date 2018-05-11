@@ -8,7 +8,7 @@ class CustomHeaderView: UIView {
     var bgColor = UIColor(red: 235/255, green: 96/255, blue: 91/255, alpha: 1)
     var titleLabel = UILabel()
     var articleIcon:UIImageView!
-    var segmentControl = UISegmentedControl()
+    //var segmentControl = UISegmentedControl(items: ["one", "two"])
   
     init(frame:CGRect,title: String) {
         self.titleLabel.text = title.uppercased()
@@ -16,6 +16,7 @@ class CustomHeaderView: UIView {
         setBackground()
         setTitleLabel()
         setArticleIcon()
+       // setSegmentedControl()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -24,15 +25,13 @@ class CustomHeaderView: UIView {
 //    func setSegmentedControl() {
 //        segmentControl.translatesAutoresizingMaskIntoConstraints = false
 //        self.addSubview(segmentControl)
-//        
+//
 //        let titlesConstraints:[NSLayoutConstraint] = [
-//            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-//            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 28), //constant - доболнительный отступ относительно equalTo
+//            segmentControl.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            segmentControl.topAnchor.constraint(equalTo: self.topAnchor, constant: 60), //constant - дополнительный отступ относительно equalTo
 //        ]
 //        NSLayoutConstraint.activate(titlesConstraints)
 //    }
-
-
     
     func setTitleLabel() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -73,10 +72,15 @@ class CustomHeaderView: UIView {
         self.backgroundColor = UIColor.white
         imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        //Задаем background картинку
+        imageView.image = UIImage(named: "userBackground")
+        imageView.contentMode = .scaleAspectFill //картинка не растягивается под View, а обрезается
         self.addSubview(imageView)
         
         colorView = UIView()
         colorView.translatesAutoresizingMaskIntoConstraints = false
+        colorView.backgroundColor = bgColor
+        colorView.alpha = 0.6 //Уровень прозрачности
         self.addSubview(colorView)
         
         let constraints:[NSLayoutConstraint] = [
@@ -90,13 +94,6 @@ class CustomHeaderView: UIView {
             colorView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
-        
-        //Задаем background картинку
-        imageView.image = UIImage(named: "userBackground")
-        imageView.contentMode = .scaleAspectFill //картинка не растягивается под View, а обрезается
-        
-        colorView.backgroundColor = bgColor
-        colorView.alpha = 0.6 //Уровень прозрачности
     }
 ///
     //Функция, увеличивающая уровень прозрачности фона
