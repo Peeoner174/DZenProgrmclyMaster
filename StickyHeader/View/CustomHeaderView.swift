@@ -8,6 +8,7 @@ class CustomHeaderView: UIView {
     var bgColor = UIColor(red: 235/255, green: 96/255, blue: 91/255, alpha: 1)
     var titleLabel = UILabel()
     var articleIcon:UIImageView!
+    var segmentControl = UISegmentedControl()
   
     init(frame:CGRect,title: String) {
         self.titleLabel.text = title.uppercased()
@@ -20,6 +21,19 @@ class CustomHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 ///
+//    func setSegmentedControl() {
+//        segmentControl.translatesAutoresizingMaskIntoConstraints = false
+//        self.addSubview(segmentControl)
+//        
+//        let titlesConstraints:[NSLayoutConstraint] = [
+//            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 28), //constant - доболнительный отступ относительно equalTo
+//        ]
+//        NSLayoutConstraint.activate(titlesConstraints)
+//    }
+
+
+    
     func setTitleLabel() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(titleLabel)
