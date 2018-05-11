@@ -3,11 +3,11 @@ import UIKit
 
 class UserController: UIViewController {
     
-    var segmentControl = UISegmentedControl(items: ["ОБО МНЕ", "МОИ ПОЕЗДКИ"])
 
     let cellId = "cellId"
     var products : [Product]  = [Product]()
     
+    var segmentControl: SegmentedControlView!
     var tableView:UITableView!
     var headerView:CustomHeaderView!
     var headerHeightConstraint:NSLayoutConstraint!
@@ -46,16 +46,19 @@ class UserController: UIViewController {
     
     
     func setSegmentedControl() {
+        segmentControl = SegmentedControlView(frame: CGRect.zero)
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentControl.tintColor = UIColor(red: 250/255, green: 97/255, blue: 80/255, alpha: 1)
         segmentControl.backgroundColor = UIColor.white
+        segmentControl.segmentControl.selectedSegmentIndex = 0
+        
         view.addSubview(segmentControl)
         
         let titlesConstraints:[NSLayoutConstraint] = [
-            segmentControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            segmentControl.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 6), //constant - дополнительный отступ относительно equalTo
-            segmentControl.widthAnchor.constraint(equalToConstant: 280),
-            segmentControl.heightAnchor.constraint(equalToConstant: 28)
+            segmentControl.leftAnchor.constraint(equalTo: view.leftAnchor),
+            segmentControl.rightAnchor.constraint(equalTo: view.rightAnchor),
+            segmentControl.topAnchor.constraint(equalTo: headerView.bottomAnchor), //constant - дополнительный отступ относительно equalTo
+            //segmentControl.bottomAnchor.constraint(equalTo: tableView.topAnchor)
+            segmentControl.heightAnchor.constraint(equalToConstant: 40)
         ]
         NSLayoutConstraint.activate(titlesConstraints)
     }
@@ -119,11 +122,15 @@ extension UserController:UIScrollViewDelegate {
             self.headerHeightConstraint.constant += abs(scrollView.contentOffset.y) //изменение размера
             headerView.incrementColorAlpha(self.headerHeightConstraint.constant) //Цвет
             headerView.incrementArticleAlpha(self.headerHeightConstraint.constant) //Картинка
+            self.headerView.imageView.image = UIImage(named: "userBackground")
+
             
             //Задание максимального размера header`a
             if self.headerHeightConstraint.constant > 200{
                 self.headerHeightConstraint.constant = 200
             }
+            
+            
         
             //Когда пользователь скролит вниз
         } else if scrollView.contentOffset.y > 0 && self.headerHeightConstraint.constant >= 65 {
@@ -134,6 +141,12 @@ extension UserController:UIScrollViewDelegate {
             //Задание минимального размера header`a
             if self.headerHeightConstraint.constant < 65 {
                 self.headerHeightConstraint.constant = 65
+               self.headerView.imageView.image = UIImage(named: "Bez_imeni")
+                //imageView.image = UIImage(named: "userBackground")
+            }
+            if self.headerHeightConstraint.constant > 65 {
+                self.headerView.imageView.image = UIImage(named: "userBackground")
+                //imageView.image = UIImage(named: "userBackground")
             }
         }
     }

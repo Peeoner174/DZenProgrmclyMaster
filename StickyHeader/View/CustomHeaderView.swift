@@ -64,6 +64,7 @@ class CustomHeaderView: UIView {
         imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         //Задаем background картинку
+        
         imageView.image = UIImage(named: "userBackground")
         imageView.contentMode = .scaleAspectFill //картинка не растягивается под View, а обрезается
         self.addSubview(imageView)
