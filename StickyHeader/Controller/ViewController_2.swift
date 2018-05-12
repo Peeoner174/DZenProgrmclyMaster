@@ -2,7 +2,7 @@ import UIKit
 /**
  
  */
-class ViewController_2: UIViewController {
+class ViewController_2: UITableView {
 
     var button = Button()
 

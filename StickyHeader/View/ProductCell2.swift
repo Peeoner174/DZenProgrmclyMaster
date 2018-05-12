@@ -8,11 +8,11 @@ class ProductCell2 : UITableViewCell {
     var productDescriptionLabel : UILabel!
     
     
-    var product : Product? {
+    var about : About? {
         didSet {
             
-            productNameLabel.text = product?.productName
-            productDescriptionLabel.text = product?.productDesc
+            productNameLabel.text = about?.productName
+            productDescriptionLabel.text = about?.productDesc
         }
     }
     

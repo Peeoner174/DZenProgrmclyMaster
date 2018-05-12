@@ -5,7 +5,10 @@ class UserController: UIViewController {
     
 
     let cellId = "cellId"
+    let cellId2 = "cellId2"
+    
     var products : [Product]  = [Product]()
+    var abouts : [About] = [About]()
     
     var segmentControl: SegmentedControlView!
     var tableView:UITableView!
@@ -19,6 +22,7 @@ class UserController: UIViewController {
         setUpHeader()
         setSegmentedControl()
         createProductArray()
+        createAboutArray()
         setUpTableView()
         
     }
@@ -43,13 +47,24 @@ class UserController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    
+    @objc func segmentedValueChanged()
+    {
+        if segmentControl.segmentControl.selectedSegmentIndex == 0 {
+            //tableView.register(ProductCell2.self, forCellReuseIdentifier: cellId2)
+            self.tableView.reloadData()
+        }
+        if segmentControl.segmentControl.selectedSegmentIndex == 1 {
+           
+            
+            self.tableView.reloadData()
+        }
+    }
     
     func setSegmentedControl() {
         segmentControl = SegmentedControlView(frame: CGRect.zero)
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
         segmentControl.backgroundColor = UIColor.white
-        segmentControl.segmentControl.selectedSegmentIndex = 0
+        segmentControl.segmentControl.addTarget(self, action: #selector(segmentedValueChanged), for: .valueChanged)
         
         view.addSubview(segmentControl)
         
@@ -78,6 +93,8 @@ class UserController: UIViewController {
         
         //Индетификатор для tableView
         tableView.register(ProductCell.self, forCellReuseIdentifier: cellId)
+     //   tableView.register(ProductCell2.self, forCellReuseIdentifier: cellId2)
+
         
         /**
          UITableViewDataSource — набор методов, с помощью которых UITableView получает данные. Имеет три  обязательных метода:
@@ -169,15 +186,27 @@ extension UserController:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products.count
+        //if segmentControl.segmentControl.selectedSegmentIndex == 0{
+        //    return abouts.count
+       // }
+       // else
+        //{}
+            return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! ProductCell
-        let currentLastItem = products[indexPath.row]
-        cell.product = currentLastItem
-        
-        return cell
+        let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellId" ) as! ProductCell
+      //  let cell2 = tableView.dequeueReusableCell(withIdentifier: "cellId2") as! ProductCell2
+            
+      //  cell2.about = abouts[indexPath.row]
+        cell1.product = products[indexPath.row]
+      
+    //    if segmentControl.segmentControl.selectedSegmentIndex == 0{
+            return cell1
+     //   }
+    //    else
+     //   {return cell2}
+      
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -197,6 +226,12 @@ extension UserController:UITableViewDataSource {
         products.append(Product(productName: "Рассвет", productImage: #imageLiteral(resourceName: "two") , productDesc: "Тест. Это заглушка"))
         products.append(Product(productName: "Пустыня", productImage: #imageLiteral(resourceName: "one") , productDesc: "Уазик )"))
         products.append(Product(productName: "Дома", productImage:  #imageLiteral(resourceName: "three"), productDesc: "Тестовое описание"))
+    }
+    
+    func createAboutArray() {
+        abouts.append(About(productName: "Рассвет", productDesc: "Тест. Это заглушка"))
+        abouts.append(About(productName: "Пустыня", productDesc: "Уазик )"))
+        abouts.append(About(productName: "Дома", productDesc: "Тестовое описание"))
     }
 }
 

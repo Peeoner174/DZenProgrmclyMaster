@@ -3,7 +3,9 @@ import UIKit
 
 class ProductCell : UITableViewCell {
     let minValue = 0
-      
+    
+    
+     
     var productNameLabel : UILabel!
     var productDescriptionLabel : UILabel!
     var  productImage : UIImageView!
@@ -16,11 +18,14 @@ class ProductCell : UITableViewCell {
         }
     }
     
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setProductImageIV()
         setProductNameL()
         setProductDescriptionL()
+        
+        
         
     }
     
