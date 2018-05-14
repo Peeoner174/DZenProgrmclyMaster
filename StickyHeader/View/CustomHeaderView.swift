@@ -40,6 +40,8 @@ class CustomHeaderView: UIView {
     func setArticleIcon() {
         articleIcon = UIImageView()
         articleIcon.translatesAutoresizingMaskIntoConstraints = false
+        articleIcon.layer.borderColor = UIColor.white.cgColor
+        articleIcon.layer.borderWidth = 1
         self.addSubview(articleIcon)
         
         let imageConstraints:[NSLayoutConstraint] = [

@@ -33,6 +33,8 @@ class ProductCell2 : UITableViewCell {
         productNameLabel = {
             let lbl = UILabel()
             lbl.textColor = .black
+            lbl.translatesAutoresizingMaskIntoConstraints = false
+
             lbl.font = UIFont.boldSystemFont(ofSize: 16)
             lbl.textAlignment = .left
             return lbl
@@ -40,16 +42,11 @@ class ProductCell2 : UITableViewCell {
         //Добавление элемента в viewController
         addSubview(productNameLabel)
         
-        productNameLabel.anchor(top: topAnchor
-            , left: rightAnchor
-            , bottom: nil, right: nil
-            , paddingTop: 20
-            , paddingLeft: 10
-            , paddingBottom: 0
-            , paddingRight: 0
-            , width: frame.size.width / 2
-            , height: 0
-            , enableInsets: false)
+        let constraints:[NSLayoutConstraint] = [
+           // productNameLabel.topAnchor.constraint(equalTo: bottomAnchor, constant: 2),
+            productNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
     ///
     func setProductDescriptionL() {
@@ -57,6 +54,8 @@ class ProductCell2 : UITableViewCell {
             let lbl = UILabel()
             lbl.textColor = .black
             lbl.font = UIFont.systemFont(ofSize: 16)
+            lbl.translatesAutoresizingMaskIntoConstraints = false
+
             lbl.textAlignment = .left
             lbl.numberOfLines = 0
             return lbl

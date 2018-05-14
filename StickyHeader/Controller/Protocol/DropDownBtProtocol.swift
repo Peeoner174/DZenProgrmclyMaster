@@ -3,6 +3,11 @@
 **/
 
 protocol DropDownBtProtocol {
-    func dropDownPressed()
+ 
+    func dropDownPressed(rowMenu: Int)
+   // func dropDownPressed()
+
 }
+
+
 

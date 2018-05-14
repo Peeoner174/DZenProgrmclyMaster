@@ -9,11 +9,14 @@ class UserController: UIViewController {
     
     var products : [Product]  = [Product]()
     var abouts : [About] = [About]()
+   
+
     
     var segmentControl: SegmentedControlView!
     var tableView:UITableView!
     var headerView:CustomHeaderView!
     var headerHeightConstraint:NSLayoutConstraint!
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +24,9 @@ class UserController: UIViewController {
         
         setUpHeader()
         setSegmentedControl()
+       // createAboutArray()
         createProductArray()
-        createAboutArray()
+        
         setUpTableView()
         
     }
@@ -50,7 +54,7 @@ class UserController: UIViewController {
     @objc func segmentedValueChanged()
     {
         if segmentControl.segmentControl.selectedSegmentIndex == 0 {
-            //tableView.register(ProductCell2.self, forCellReuseIdentifier: cellId2)
+            
             self.tableView.reloadData()
         }
         if segmentControl.segmentControl.selectedSegmentIndex == 1 {
@@ -64,6 +68,7 @@ class UserController: UIViewController {
         segmentControl = SegmentedControlView(frame: CGRect.zero)
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
         segmentControl.backgroundColor = UIColor.white
+        segmentControl.segmentControl.selectedSegmentIndex = 1
         segmentControl.segmentControl.addTarget(self, action: #selector(segmentedValueChanged), for: .valueChanged)
         
         view.addSubview(segmentControl)
@@ -81,6 +86,7 @@ class UserController: UIViewController {
     func setUpTableView() {
         tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.allowsSelection = false
         view.addSubview(tableView)
         
         let constraints:[NSLayoutConstraint] = [
@@ -92,8 +98,8 @@ class UserController: UIViewController {
         NSLayoutConstraint.activate(constraints)
         
         //Индетификатор для tableView
-        tableView.register(ProductCell.self, forCellReuseIdentifier: cellId)
-     //   tableView.register(ProductCell2.self, forCellReuseIdentifier: cellId2)
+        tableView?.register(ProductCell.self, forCellReuseIdentifier: cellId)
+        tableView?.register(ProductCell2.self, forCellReuseIdentifier: cellId2)
 
         
         /**
@@ -186,32 +192,62 @@ extension UserController:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //if segmentControl.segmentControl.selectedSegmentIndex == 0{
-        //    return abouts.count
-       // }
-       // else
-        //{}
-            return products.count
+        if segmentControl.segmentControl.selectedSegmentIndex == 0{
+            return 5
+               // abouts.count
+            
+        }
+        else
+    
+        { return products.count}
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell1 = tableView.dequeueReusableCell(withIdentifier: "cellId" ) as! ProductCell
-      //  let cell2 = tableView.dequeueReusableCell(withIdentifier: "cellId2") as! ProductCell2
+        
+    
+            let identifier: String
+            if segmentControl.segmentControl.selectedSegmentIndex == 0 {
+                identifier = cellId2
+                
+                let cell = UITableViewCell(style: .subtitle, reuseIdentifier: identifier)
+                //let course = abouts[indexPath.row]
+                cell.textLabel?.text = "123"
+                cell.detailTextLabel?.text = "456"
+                cell.detailTextLabel?.textColor = UIColor.lightGray
+                cell.detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 13)
+                return cell
+                
+//
+//                let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ProductCell2
+//                cell.about = abouts[indexPath.row]
+//                return cell
+               
+            }
+                
+            else    {
+                
+                identifier = cellId
+                let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ProductCell
+                cell.product = products[indexPath.row]
+                return cell
+                
+  
+            }
+        
             
-      //  cell2.about = abouts[indexPath.row]
-        cell1.product = products[indexPath.row]
-      
-    //    if segmentControl.segmentControl.selectedSegmentIndex == 0{
-            return cell1
-     //   }
-    //    else
-     //   {return cell2}
-      
+        }
+            
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if segmentControl.segmentControl.selectedSegmentIndex == 1 {
+
+            return 100}
+        else{return UITableViewAutomaticDimension
+            
+        }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
     
     func createProductArray() {
         products.append(Product(productName: "Рассвет", productImage: #imageLiteral(resourceName: "two") , productDesc: "Тест. Это заглушка"))
@@ -228,10 +264,13 @@ extension UserController:UITableViewDataSource {
         products.append(Product(productName: "Дома", productImage:  #imageLiteral(resourceName: "three"), productDesc: "Тестовое описание"))
     }
     
-    func createAboutArray() {
-        abouts.append(About(productName: "Рассвет", productDesc: "Тест. Это заглушка"))
-        abouts.append(About(productName: "Пустыня", productDesc: "Уазик )"))
-        abouts.append(About(productName: "Дома", productDesc: "Тестовое описание"))
-    }
+//    func createAboutArray() {
+//        abouts.append(About(productName: "Рассвет", productDesc: "Тест. Это заглушка"))
+//        abouts.append(About(productName: "Пустыня", productDesc: "Уазик )"))
+//        abouts.append(About(productName: "Дома", productDesc: "Тестовое описание"))
+//    }
+    
 }
+
+
 

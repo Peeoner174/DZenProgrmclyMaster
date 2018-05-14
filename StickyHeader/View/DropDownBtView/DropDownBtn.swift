@@ -10,14 +10,19 @@ class DropDownBtn: UIButton, DropDownBtProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        
         dropView = DrDwnBtnContentView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
         dropView.delegate = self
+        
         dropView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     //Выполняется когда какое-то из меню в drop-down было выбрано
-    func dropDownPressed() {
+    func dropDownPressed(rowMenu: Int) {
         self.closeDropDown()
+        print(rowMenu)
+       // addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
+        
     }
     
     var dropView = DrDwnBtnContentView()
@@ -33,12 +38,17 @@ class DropDownBtn: UIButton, DropDownBtProtocol {
         let constraints:[NSLayoutConstraint] = [
             //Расположение
             dropView.topAnchor.constraint(equalTo: self.bottomAnchor),
-            dropView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            dropView.rightAnchor.constraint(equalTo: self.leftAnchor),
             //Размеры
             dropView.widthAnchor.constraint(equalToConstant: 120)
         ]
         NSLayoutConstraint.activate(constraints)
         height = dropView.heightAnchor.constraint(equalToConstant: 0)
+        //dropView.layer.sha
+        
+        dropView.layer.shadowRadius = 1.0
+        dropView.layer.shadowOpacity = 0.6
+        dropView.layer.shadowOffset = CGSize.zero
     }
     
     //При открытии drop-down menu
@@ -74,8 +84,8 @@ class DropDownBtn: UIButton, DropDownBtProtocol {
         
         //Вычисляется высота окна drop-down menu
         NSLayoutConstraint.deactivate([self.height])//сброс пред. настроек высоты окна
-        if self.dropView.tableView.contentSize.height > 150 {
-            self.height.constant = 150
+        if self.dropView.tableView.contentSize.height > 56 {
+            self.height.constant = 56
         } else {
             self.height.constant = self.dropView.tableView.contentSize.height
         }

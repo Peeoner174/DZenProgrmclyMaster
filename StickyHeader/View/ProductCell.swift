@@ -5,10 +5,11 @@ class ProductCell : UITableViewCell {
     let minValue = 0
     
     
-     
+    var button = Button()
     var productNameLabel : UILabel!
     var productDescriptionLabel : UILabel!
     var  productImage : UIImageView!
+    var userImage : UIImageView!
     
     var product : Product? {
         didSet {
@@ -24,9 +25,8 @@ class ProductCell : UITableViewCell {
         setProductImageIV()
         setProductNameL()
         setProductDescriptionL()
-        
-        
-        
+        setDropDownButton()
+        setUserImageIV()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,6 +40,7 @@ class ProductCell : UITableViewCell {
             lbl.textColor = .black
             lbl.font = UIFont.boldSystemFont(ofSize: 16)
             lbl.textAlignment = .left
+            
             return lbl
         }()
         //Добавление элемента в viewController
@@ -48,7 +49,7 @@ class ProductCell : UITableViewCell {
         productNameLabel.anchor(top: topAnchor
             , left: productImage.rightAnchor
             , bottom: nil, right: nil
-            , paddingTop: 20
+            , paddingTop: 10
             , paddingLeft: 10
             , paddingBottom: 0
             , paddingRight: 0
@@ -64,6 +65,7 @@ class ProductCell : UITableViewCell {
             lbl.font = UIFont.systemFont(ofSize: 16)
             lbl.textAlignment = .left
             lbl.numberOfLines = 0
+            
             return lbl
         }()
         //Добавление элемента в viewController
@@ -83,6 +85,7 @@ class ProductCell : UITableViewCell {
         productImage = {
             let imgView = UIImageView(image: #imageLiteral(resourceName: "profil"))
             imgView.contentMode = .scaleAspectFill
+          
             imgView.clipsToBounds = true
             return imgView
         }()
@@ -102,6 +105,64 @@ class ProductCell : UITableViewCell {
             , enableInsets: false)
     }
     
+    func setUserImageIV() {
+        userImage = {
+            let imgView = UIImageView(image: #imageLiteral(resourceName: "profil"))
+           // imgView.contentMode = .scaleAspectFill
+            imgView.layer.cornerRadius = 10
+            imgView.layer.masksToBounds = true
+              imgView.translatesAutoresizingMaskIntoConstraints = false
+           // imgView.clipsToBounds = true
+            return imgView
+        }()
+        //Добавление элемента в viewController
+        addSubview(userImage)
+        
+        let constraints:[NSLayoutConstraint] = [
+            //Расположение
+            userImage.leftAnchor.constraint(equalTo: productImage.rightAnchor, constant: 10),
+            userImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            //Размеры
+            userImage.widthAnchor.constraint(equalToConstant: 20),
+            userImage.heightAnchor.constraint(equalToConstant: 20)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        
+
+    }
+    
+    func setDropDownButton(){
+        
+        //Конфигурация кнопки
+        //Задание внешнего вида кнопки
+        button.setImage(UIImage(named: "more"), for: .normal)
+        
+        
+        //Когда констрейнты задаются в коде нужно ставить false
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        //Add Button to the View Controller
+        addSubview(button)
+        
+        //button Constraints
+        let constraints:[NSLayoutConstraint] = [
+            //Расположение
+            button.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
+            button.centerYAnchor.constraint(equalTo: topAnchor, constant: 20),
+            //Размеры
+            button.widthAnchor.constraint(equalToConstant: 20),
+            button.heightAnchor.constraint(equalToConstant: 20)
+        ]
+        NSLayoutConstraint.activate(constraints)
+        
+        //drop down menu options
+        button.dropView.dropDownOptions = ["Фотографии", "Заметки"]
+        
+    }
+    
+    
+    
 }
+
 
 

@@ -15,10 +15,11 @@ class MainTabBarController: UITabBarController {
         tabBar.barTintColor = UIColor(red: 194, green: 31, blue: 31, alpha: 1)
         
         //Наполнение
-        let oneController = createNavController(vc: ViewController_2(), image_icon: #imageLiteral(resourceName: "ic_ios_place"), title: "123")
+        let oneController = createNavController(vc: GmapsController(), image_icon: #imageLiteral(resourceName: "ic_ios_place"), title: "123")
         let twoController = createNavController(vc: UserController(), image_icon: #imageLiteral(resourceName: "ic_ios_art_track"), title: "456")
+        let threeController = createNavController(vc: TapleController(), image_icon: #imageLiteral(resourceName: "ic_ios_place"), title: "789")
         
-        viewControllers = [oneController, twoController]
+        viewControllers = [oneController, twoController, threeController]
         
         //Регулировка расположения элементов таб-бара
         guard let items = tabBar.items else { return }

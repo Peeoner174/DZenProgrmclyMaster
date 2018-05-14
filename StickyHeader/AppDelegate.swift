@@ -1,5 +1,6 @@
 
 import UIKit
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().shadowImage = UIImage()
         //NavigatiomBar больше не закрывает половину HeadView
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
+        GMSServices.provideAPIKey("AIzaSyA2605Nueb1k2XYmQGDAn14T2et8ob9EPw")
    
         return true
     }
