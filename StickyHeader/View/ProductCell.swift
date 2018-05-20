@@ -1,5 +1,6 @@
 
 import UIKit
+import AlamofireImage
 
 class ProductCell : UITableViewCell {
     let minValue = 0
@@ -13,9 +14,11 @@ class ProductCell : UITableViewCell {
     
     var product : Product? {
         didSet {
-            productImage.image = product?.productImage
-            productNameLabel.text = product?.productName
-            productDescriptionLabel.text = product?.productDesc
+            do{
+            productImage.af_setImage(withURL: try (product?.photo.asURL())!)
+            }catch let loadImageEr{print("loadImageEr", loadImageEr)}
+            productNameLabel.text = product?.title
+            productDescriptionLabel.text = product?.date
         }
     }
     
@@ -27,6 +30,8 @@ class ProductCell : UITableViewCell {
         setProductDescriptionL()
         setDropDownButton()
         setUserImageIV()
+        
+      	
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -85,6 +90,7 @@ class ProductCell : UITableViewCell {
         productImage = {
             let imgView = UIImageView(image: #imageLiteral(resourceName: "profil"))
             imgView.contentMode = .scaleAspectFill
+            
           
             imgView.clipsToBounds = true
             return imgView

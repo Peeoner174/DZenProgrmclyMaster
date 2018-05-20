@@ -11,8 +11,8 @@ class ProductCell2 : UITableViewCell {
     var about : About? {
         didSet {
             
-            productNameLabel.text = about?.productName
-            productDescriptionLabel.text = about?.productDesc
+            productNameLabel.text = about?.title
+            productDescriptionLabel.text = about?.note_text
         }
     }
     

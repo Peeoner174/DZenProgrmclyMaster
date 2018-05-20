@@ -46,24 +46,7 @@ class TapleController: UITableViewController {
     }
     
     func createProductArray() {
-        products.append(Product(productName: "Glasses", productImage: #imageLiteral(resourceName: "one") , productDesc: "This is best Glasses I've ever seen"))
-        products.append(Product(productName: "Desert", productImage: #imageLiteral(resourceName: "one") , productDesc: "This is so yummy"))
-        products.append(Product(productName: "Camera Lens", productImage:  #imageLiteral(resourceName: "one"), productDesc: "I wish I had this camera lens"))
-        products.append(Product(productName: "Glasses", productImage: #imageLiteral(resourceName: "one") , productDesc: "This is best Glasses I've ever seen"))
-        products.append(Product(productName: "Desert", productImage: #imageLiteral(resourceName: "one") , productDesc: "This is so yummy"))
-        products.append(Product(productName: "Camera Lens", productImage:  #imageLiteral(resourceName: "one"), productDesc: "I wish I had this camera lens"))
-        products.append(Product(productName: "Glasses", productImage: #imageLiteral(resourceName: "one") , productDesc: "This is best Glasses I've ever seen"))
-        products.append(Product(productName: "Desert", productImage: #imageLiteral(resourceName: "one") , productDesc: "This is so yummy"))
-        products.append(Product(productName: "Camera Lens", productImage:  #imageLiteral(resourceName: "one"), productDesc: "I wish I had this camera lens"))
-        products.append(Product(productName: "Glasses", productImage: #imageLiteral(resourceName: "one") , productDesc: "This is best Glasses I've ever seen"))
-        products.append(Product(productName: "Desert", productImage: #imageLiteral(resourceName: "one") , productDesc: "This is so yummy"))
-        products.append(Product(productName: "Camera Lens", productImage:  #imageLiteral(resourceName: "one"), productDesc: "I wish I had this camera lens"))
-        products.append(Product(productName: "Glasses", productImage: #imageLiteral(resourceName: "one") , productDesc: "This is best Glasses I've ever seen"))
-        products.append(Product(productName: "Desert", productImage: #imageLiteral(resourceName: "one") , productDesc: "This is so yummy"))
-        products.append(Product(productName: "Camera Lens", productImage:  #imageLiteral(resourceName: "one"), productDesc: "I wish I had this camera lens"))
-        products.append(Product(productName: "Glasses", productImage: #imageLiteral(resourceName: "one") , productDesc: "This is best Glasses I've ever seen"))
-        products.append(Product(productName: "Desert", productImage: #imageLiteral(resourceName: "one") , productDesc: "This is so yummy"))
-        products.append(Product(productName: "Camera Lens", productImage:  #imageLiteral(resourceName: "one"), productDesc: "I wish I had this camera lens"))
+
     }
     
     

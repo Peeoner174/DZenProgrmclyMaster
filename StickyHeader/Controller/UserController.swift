@@ -1,5 +1,7 @@
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class UserController: UIViewController {
     
@@ -24,7 +26,7 @@ class UserController: UIViewController {
         
         setUpHeader()
         setSegmentedControl()
-       // createAboutArray()
+        createAboutArray()
         createProductArray()
         
         setUpTableView()
@@ -193,13 +195,14 @@ extension UserController:UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if segmentControl.segmentControl.selectedSegmentIndex == 0{
-            return 5
+            return abouts.count
                // abouts.count
             
         }
         else
     
-        { return products.count}
+        {
+            return products.count}
         
     }
     
@@ -209,11 +212,11 @@ extension UserController:UITableViewDataSource {
             let identifier: String
             if segmentControl.segmentControl.selectedSegmentIndex == 0 {
                 identifier = cellId2
-                
                 let cell = UITableViewCell(style: .subtitle, reuseIdentifier: identifier)
-                //let course = abouts[indexPath.row]
-                cell.textLabel?.text = "123"
-                cell.detailTextLabel?.text = "456"
+                
+                let course = abouts[indexPath.row]
+                cell.textLabel?.text = course.note_text
+                cell.detailTextLabel?.text = course.note_text
                 cell.detailTextLabel?.textColor = UIColor.lightGray
                 cell.detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 13)
                 return cell
@@ -243,34 +246,90 @@ extension UserController:UITableViewDataSource {
         if segmentControl.segmentControl.selectedSegmentIndex == 1 {
 
             return 100}
-        else{return UITableViewAutomaticDimension
+        else
+        {return UITableViewAutomaticDimension
             
         }
     }
     
     
     func createProductArray() {
-        products.append(Product(productName: "Рассвет", productImage: #imageLiteral(resourceName: "two") , productDesc: "Тест. Это заглушка"))
-        products.append(Product(productName: "Пустыня", productImage: #imageLiteral(resourceName: "one") , productDesc: "Уазик )"))
-        products.append(Product(productName: "Дома", productImage:  #imageLiteral(resourceName: "three"), productDesc: "Тестовое описание"))
-        products.append(Product(productName: "Рассвет", productImage: #imageLiteral(resourceName: "two") , productDesc: "Тест. Это заглушка"))
-        products.append(Product(productName: "Пустыня", productImage: #imageLiteral(resourceName: "one") , productDesc: "Уазик )"))
-        products.append(Product(productName: "Дома", productImage:  #imageLiteral(resourceName: "three"), productDesc: "Тестовое описание"))
-        products.append(Product(productName: "Рассвет", productImage: #imageLiteral(resourceName: "two") , productDesc: "Тест. Это заглушка"))
-        products.append(Product(productName: "Пустыня", productImage: #imageLiteral(resourceName: "one") , productDesc: "Уазик )"))
-        products.append(Product(productName: "Дома", productImage:  #imageLiteral(resourceName: "three"), productDesc: "Тестовое описание"))
-        products.append(Product(productName: "Рассвет", productImage: #imageLiteral(resourceName: "two") , productDesc: "Тест. Это заглушка"))
-        products.append(Product(productName: "Пустыня", productImage: #imageLiteral(resourceName: "one") , productDesc: "Уазик )"))
-        products.append(Product(productName: "Дома", productImage:  #imageLiteral(resourceName: "three"), productDesc: "Тестовое описание"))
+        
+        let url = "http://139.59.139.197:8001/pavelk/history/0/"
+        
+        Alamofire.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if json.dictionary!["success"] == true
+                {let data = json.dictionary!["data"]!
+                    
+                    
+                    do {
+                        let rawData = try data.rawData()
+                        do {
+                            let decoder = JSONDecoder()
+                            self.products = try decoder.decode([Product].self, from: rawData)
+                            self.tableView.reloadData()
+                            
+                        } catch let jsonErr {
+                            print("Failed to decode:", jsonErr)
+                        }
+                    } catch {
+                        print("Error raw data \(error)")
+                    }
+                }
+                else {
+                    print(json.dictionary!["message"]!)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+     
     }
     
-//    func createAboutArray() {
-//        abouts.append(About(productName: "Рассвет", productDesc: "Тест. Это заглушка"))
-//        abouts.append(About(productName: "Пустыня", productDesc: "Уазик )"))
-//        abouts.append(About(productName: "Дома", productDesc: "Тестовое описание"))
-//    }
+    func createAboutArray() {
+        
+        let url = "http://139.59.139.197:8001/pavelk/note/note1/"
+        
+        Alamofire.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if json.dictionary!["success"] == true
+                {let data = json.dictionary!["data"]!
+                    let notes = data["notes"]
+    
+                    do {
+                        let rawData = try notes.rawData()
+                        do {
+                            let decoder = JSONDecoder()
+                            self.abouts = try decoder.decode([About].self, from: rawData)
+                            self.tableView.reloadData()
+                            
+                        } catch let jsonErr {
+                            print("Failed to decode:", jsonErr)
+                        }
+                    } catch {
+                        print("Error raw data \(error)")
+                    }
+                }
+                else {
+                    print(json.dictionary!["message"]!)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+    }
     
 }
+    
+
 
 
 

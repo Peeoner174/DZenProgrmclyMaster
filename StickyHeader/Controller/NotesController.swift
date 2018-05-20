@@ -1,6 +1,7 @@
 
 import UIKit
 
+
 class NotesController: UITableViewController {
     
     var courses = [Course]()

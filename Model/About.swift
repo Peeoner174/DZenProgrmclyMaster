@@ -1,8 +1,9 @@
 
 import UIKit
 
-struct About {
+struct About : Decodable {
     
-    var productName : String
-    var productDesc : String
+    var id : String
+    var title : String
+    var note_text : String
 }
