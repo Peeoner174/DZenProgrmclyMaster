@@ -12,7 +12,8 @@ class MainTabBarController: UITabBarController {
     func setupTabBar() {
         
         //Цвет таб-бара
-        tabBar.barTintColor = UIColor(red: 194, green: 31, blue: 31, alpha: 1)
+        tabBar.barTintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
         
         //Наполнение
         let oneController = createNavController(vc: GmapsController(), image_icon: #imageLiteral(resourceName: "ic_ios_place"), title: "123")

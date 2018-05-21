@@ -1,17 +1,21 @@
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class TapleController: UITableViewController {
+    
     
     let cellId = "cellId"
     var products : [Product]  = [Product]()
     
-
-  
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        UIApplication.shared.statusBarView?.backgroundColor = .red
+
+        
         navigationItem.title = "Course List"
         navigationController?.navigationBar.backgroundColor = UIColor.blue
 
@@ -21,15 +25,7 @@ class TapleController: UITableViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProductCell
         let currentLastItem = products[indexPath.row]
@@ -46,10 +42,43 @@ class TapleController: UITableViewController {
     }
     
     func createProductArray() {
+        let url = "http://139.59.139.197:8001/pavelk/history/0/"
+        
+        Alamofire.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                
+                if json.dictionary!["success"] == true
+                {let data = json.dictionary!["data"]!
+                    
+                    
+                    do {
+                        let rawData = try data.rawData()
+                        do {
+                            let decoder = JSONDecoder()
+                            self.products = try decoder.decode([Product].self, from: rawData)
+                            self.tableView.reloadData()
+                            
+                        } catch let jsonErr {
+                            print("Failed to decode product:", jsonErr)
+                        }
+                    } catch {
+                        print("Error raw data \(error)")
+                    }
+                }
+                else {
+                    print(json.dictionary!["message"]!)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
 
     }
     
     
     
 }
+
 

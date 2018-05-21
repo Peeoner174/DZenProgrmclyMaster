@@ -71,6 +71,7 @@ class DrDwnBtnContentView: UIView, UITableViewDelegate, UITableViewDataSource  {
         //cell.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 0.1)
         cell.textLabel?.text = dropDownOptions[indexPath.row]
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+        
      
        
         
@@ -79,7 +80,10 @@ class DrDwnBtnContentView: UIView, UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.delegate.dropDownPressed(rowMenu: indexPath.row)
+        
         self.tableView.deselectRow(at: indexPath, animated: true)
+        
+        
         
       
       

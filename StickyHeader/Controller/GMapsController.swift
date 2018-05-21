@@ -5,7 +5,12 @@ import GoogleMaps
 class GmapsController: UIViewController {
     
     // You don't need to modify the default init(nibName:bundle:) method.
-
+    
+    override var prefersStatusBarHidden: Bool{
+        get{
+            return true
+        }
+    }
     
     override func loadView() {
         // Create a GMSCameraPosition that tells the map to display the

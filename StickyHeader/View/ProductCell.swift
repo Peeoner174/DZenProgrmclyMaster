@@ -6,11 +6,12 @@ class ProductCell : UITableViewCell {
     let minValue = 0
     
     
-    var button = Button()
+    var button = DropDownBtn()
     var productNameLabel : UILabel!
     var productDescriptionLabel : UILabel!
     var  productImage : UIImageView!
     var userImage : UIImageView!
+    var buttonEvent = true
     
     var product : Product? {
         didSet {
@@ -19,6 +20,9 @@ class ProductCell : UITableViewCell {
             }catch let loadImageEr{print("loadImageEr", loadImageEr)}
             productNameLabel.text = product?.title
             productDescriptionLabel.text = product?.date
+            do{
+            userImage.af_setImage(withURL: try (product?.user_image.asURL())!)
+            }catch let loadImageEr{print("loadImageEr", loadImageEr)}
         }
     }
     
@@ -30,6 +34,7 @@ class ProductCell : UITableViewCell {
         setProductDescriptionL()
         setDropDownButton()
         setUserImageIV()
+        
         
       	
     }
@@ -88,7 +93,7 @@ class ProductCell : UITableViewCell {
 ///
     func setProductImageIV() {
         productImage = {
-            let imgView = UIImageView(image: #imageLiteral(resourceName: "profil"))
+            let imgView = UIImageView()
             imgView.contentMode = .scaleAspectFill
             
           
@@ -113,7 +118,7 @@ class ProductCell : UITableViewCell {
     
     func setUserImageIV() {
         userImage = {
-            let imgView = UIImageView(image: #imageLiteral(resourceName: "profil"))
+            let imgView = UIImageView()
            // imgView.contentMode = .scaleAspectFill
             imgView.layer.cornerRadius = 10
             imgView.layer.masksToBounds = true
@@ -142,7 +147,10 @@ class ProductCell : UITableViewCell {
         //Конфигурация кнопки
         //Задание внешнего вида кнопки
         button.setImage(UIImage(named: "more"), for: .normal)
-        
+       
+        if buttonEvent == true {
+            print("Presssed")
+        }        //buttonEvent = button.dropDownPressed(rowMenu: 0)
         
         //Когда констрейнты задаются в коде нужно ставить false
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -165,7 +173,6 @@ class ProductCell : UITableViewCell {
         button.dropView.dropDownOptions = ["Фотографии", "Заметки"]
         
     }
-    
     
     
 }

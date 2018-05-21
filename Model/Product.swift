@@ -13,6 +13,5 @@ struct Product : Decodable {
     var user_image : String
     var user_name : String
     var user_id : Int
-    
-    
+
 }

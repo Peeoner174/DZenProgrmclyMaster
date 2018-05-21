@@ -7,6 +7,8 @@ import UIKit
 
 class DropDownBtn: UIButton, DropDownBtProtocol {
     
+      
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -18,12 +20,17 @@ class DropDownBtn: UIButton, DropDownBtProtocol {
     }
     
     //Выполняется когда какое-то из меню в drop-down было выбрано
-    func dropDownPressed(rowMenu: Int) {
+    func dropDownPressed(rowMenu: Int) -> Bool {
         self.closeDropDown()
         print(rowMenu)
-       // addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
-        
+
+        return true
+        //let signUpVC = MainTabBarController()
+       // super.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
     }
+    
+
+    
     
     var dropView = DrDwnBtnContentView()
     

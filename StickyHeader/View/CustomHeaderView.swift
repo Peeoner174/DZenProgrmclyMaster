@@ -1,5 +1,6 @@
 
 import UIKit
+import AlamofireImage
 
 class CustomHeaderView: UIView {
 
@@ -8,15 +9,25 @@ class CustomHeaderView: UIView {
     var bgColor = UIColor(red: 235/255, green: 96/255, blue: 91/255, alpha: 1)
     var titleLabel = UILabel()
     var articleIcon:UIImageView!
-    //var segmentControl = UISegmentedControl(items: ["one", "two"])
+    
+//    var user : User?{
+//        didSet{
+//            do{
+//                imageView.af_setImage(withURL: try (user?.main_photo.asURL())!)
+//            }catch let loadImageEr{print("loadImageEr", loadImageEr)}
+//            do{
+//                articleIcon.af_setImage(withURL: try (user?.avatar.asURL())!)
+//            }catch let loadImageEr{print("loadImageEr", loadImageEr)}
+//
+//        }
+//    }
   
-    init(frame:CGRect,title: String) {
+    init(frame:CGRect, title: String) {
         self.titleLabel.text = title.uppercased()
         super.init(frame: frame)
         setBackground()
         setTitleLabel()
         setArticleIcon()
-       // setSegmentedControl()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -54,7 +65,7 @@ class CustomHeaderView: UIView {
         ]
         NSLayoutConstraint.activate(imageConstraints)
         
-        articleIcon.image = UIImage(named: "user")
+        articleIcon.image = UIImage()
         articleIcon.layer.cornerRadius = 10
         articleIcon.layer.masksToBounds = true
         articleIcon.contentMode = .scaleAspectFill
@@ -67,7 +78,7 @@ class CustomHeaderView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         //Задаем background картинку
         
-        imageView.image = UIImage(named: "userBackground")
+        imageView.image = UIImage()
         imageView.contentMode = .scaleAspectFill //картинка не растягивается под View, а обрезается
         self.addSubview(imageView)
         

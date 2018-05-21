@@ -5,36 +5,38 @@ import SwiftyJSON
 
 class UserController: UIViewController {
     
-
     let cellId = "cellId"
     let cellId2 = "cellId2"
     
     var products : [Product]  = [Product]()
     var abouts : [About] = [About]()
+    var user : User!
    
-
-    
     var segmentControl: SegmentedControlView!
     var tableView:UITableView!
     var headerView:CustomHeaderView!
     var headerHeightConstraint:NSLayoutConstraint!
     
-   
+    override var prefersStatusBarHidden: Bool{
+        get{
+            return true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        
+
+        createAboutArray()
         setUpHeader()
         setSegmentedControl()
-        createAboutArray()
         createProductArray()
-        
         setUpTableView()
-        
     }
 
     func setUpHeader() {
         headerView = CustomHeaderView(frame: CGRect.zero, title: "user page")
+       // headerView.user = user
         //Должен быть false, если констреинты описаны в коде
         headerView.translatesAutoresizingMaskIntoConstraints = false
         //Добавление элемента в viewController
@@ -101,7 +103,7 @@ class UserController: UIViewController {
         
         //Индетификатор для tableView
         tableView?.register(ProductCell.self, forCellReuseIdentifier: cellId)
-        tableView?.register(ProductCell2.self, forCellReuseIdentifier: cellId2)
+    
 
         
         /**
@@ -134,7 +136,6 @@ class UserController: UIViewController {
 
 }
 
-
 /**
  UIScrollViewDelegate - позволяет реагировать на операции(прокрутка, масштабирование и т.д.) определенные в классе UIScrollView
  **/
@@ -149,13 +150,10 @@ extension UserController:UIScrollViewDelegate {
             headerView.incrementArticleAlpha(self.headerHeightConstraint.constant) //Картинка
             self.headerView.imageView.image = UIImage(named: "userBackground")
 
-            
             //Задание максимального размера header`a
             if self.headerHeightConstraint.constant > 200{
                 self.headerHeightConstraint.constant = 200
             }
-            
-            
         
             //Когда пользователь скролит вниз
         } else if scrollView.contentOffset.y > 0 && self.headerHeightConstraint.constant >= 65 {
@@ -167,11 +165,9 @@ extension UserController:UIScrollViewDelegate {
             if self.headerHeightConstraint.constant < 65 {
                 self.headerHeightConstraint.constant = 65
                self.headerView.imageView.image = UIImage(named: "Bez_imeni")
-                //imageView.image = UIImage(named: "userBackground")
             }
             if self.headerHeightConstraint.constant > 65 {
                 self.headerView.imageView.image = UIImage(named: "userBackground")
-                //imageView.image = UIImage(named: "userBackground")
             }
         }
     }
@@ -195,8 +191,7 @@ extension UserController:UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if segmentControl.segmentControl.selectedSegmentIndex == 0{
-            return abouts.count
-               // abouts.count
+            return 5
             
         }
         else
@@ -207,24 +202,35 @@ extension UserController:UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-    
+      
             let identifier: String
             if segmentControl.segmentControl.selectedSegmentIndex == 0 {
                 identifier = cellId2
                 let cell = UITableViewCell(style: .subtitle, reuseIdentifier: identifier)
+                let course = user
                 
-                let course = abouts[indexPath.row]
-                cell.textLabel?.text = course.note_text
-                cell.detailTextLabel?.text = course.note_text
+                switch indexPath.row{
+                case 0:
+                    cell.textLabel?.text = "Имя"
+                    cell.detailTextLabel?.text = course?.full_name
+                case 1:
+                    cell.textLabel?.text = "Телефон"
+                    cell.detailTextLabel?.text = course?.phone
+                case 2:
+                    cell.textLabel?.text = "Email"
+                    cell.detailTextLabel?.text = course?.email
+                case 3:
+                    cell.textLabel?.text = "Страница"
+                    cell.detailTextLabel?.text = course?.website
+                case 4:
+                    cell.textLabel?.text = "Город"
+                    cell.detailTextLabel?.text = course?.city
+                default: break
+                }
+                
                 cell.detailTextLabel?.textColor = UIColor.lightGray
                 cell.detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 13)
                 return cell
-                
-//
-//                let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ProductCell2
-//                cell.about = abouts[indexPath.row]
-//                return cell
                
             }
                 
@@ -233,12 +239,9 @@ extension UserController:UITableViewDataSource {
                 identifier = cellId
                 let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ProductCell
                 cell.product = products[indexPath.row]
-                return cell
                 
-  
+                return cell
             }
-        
-            
         }
             
 
@@ -252,6 +255,7 @@ extension UserController:UITableViewDataSource {
         }
     }
     
+
     
     func createProductArray() {
         
@@ -274,7 +278,7 @@ extension UserController:UITableViewDataSource {
                             self.tableView.reloadData()
                             
                         } catch let jsonErr {
-                            print("Failed to decode:", jsonErr)
+                            print("Failed to decode product:", jsonErr)
                         }
                     } catch {
                         print("Error raw data \(error)")
@@ -290,9 +294,10 @@ extension UserController:UITableViewDataSource {
      
     }
     
+    
     func createAboutArray() {
         
-        let url = "http://139.59.139.197:8001/pavelk/note/note1/"
+        let url = "http://139.59.139.197:8001/pavelk/user/0/"
         
         Alamofire.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
@@ -301,20 +306,19 @@ extension UserController:UITableViewDataSource {
                 
                 if json.dictionary!["success"] == true
                 {let data = json.dictionary!["data"]!
-                    let notes = data["notes"]
-    
+                    print(data)
                     do {
-                        let rawData = try notes.rawData()
+                        let rawData = try data.rawData()
                         do {
                             let decoder = JSONDecoder()
-                            self.abouts = try decoder.decode([About].self, from: rawData)
+                            self.user = try decoder.decode(User.self, from: rawData)
                             self.tableView.reloadData()
                             
                         } catch let jsonErr {
-                            print("Failed to decode:", jsonErr)
+                            print("Failed to decode user:", jsonErr)
                         }
                     } catch {
-                        print("Error raw data \(error)")
+                        print("Error raw data user \(error)")
                     }
                 }
                 else {

@@ -21,18 +21,17 @@
 		E9686C2720A5AA4200DF583B /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9686C2620A5AA4200DF583B /* UITabBarController+Extension.swift */; };
 		E9686C2920A5AA9700DF583B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9686C2820A5AA9700DF583B /* UIImage+Extension.swift */; };
 		E9686C2C20A5CB9500DF583B /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9686C2B20A5CB9500DF583B /* SegmentedControlView.swift */; };
-		E9686C2E20A5EC0B00DF583B /* ProductCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9686C2D20A5EC0B00DF583B /* ProductCell2.swift */; };
 		E9686C3020A5F08900DF583B /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9686C2F20A5F08900DF583B /* About.swift */; };
 		E96F16AD20A815DD00BA24EB /* GMapsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96F16AC20A815DD00BA24EB /* GMapsController.swift */; };
 		E9A4911B20A9C2D700ECDE0E /* TapleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A4911A20A9C2D700ECDE0E /* TapleController.swift */; };
+		E9CB193120B2D20B004327C2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB193020B2D20B004327C2 /* User.swift */; };
+		E9CB193320B3342D004327C2 /* StatusBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB193220B3342D004327C2 /* StatusBar+Extension.swift */; };
 		E9DABC6E20A35BBE0063F095 /* DropDownBtProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DABC6B20A35BBD0063F095 /* DropDownBtProtocol.swift */; };
 		E9DABC6F20A35BBE0063F095 /* DrDwnBtnContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DABC6C20A35BBD0063F095 /* DrDwnBtnContentView.swift */; };
 		E9DABC7020A35BBE0063F095 /* DropDownBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DABC6D20A35BBE0063F095 /* DropDownBtn.swift */; };
-		E9DABC7220A35BCF0063F095 /* ViewController_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DABC7120A35BCF0063F095 /* ViewController_2.swift */; };
 		E9DABC7620A35BEC0063F095 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DABC7520A35BEB0063F095 /* MainTabBarController.swift */; };
 		E9DABC7820A35C040063F095 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DABC7720A35C040063F095 /* ProductCell.swift */; };
 		E9DABC7A20A35C0B0063F095 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DABC7920A35C0B0063F095 /* Product.swift */; };
-		E9F1943620AA0B5700193721 /* SegueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F1943520AA0B5700193721 /* SegueProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,18 +51,17 @@
 		E9686C2620A5AA4200DF583B /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		E9686C2820A5AA9700DF583B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		E9686C2B20A5CB9500DF583B /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
-		E9686C2D20A5EC0B00DF583B /* ProductCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell2.swift; sourceTree = "<group>"; };
 		E9686C2F20A5F08900DF583B /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		E96F16AC20A815DD00BA24EB /* GMapsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMapsController.swift; sourceTree = "<group>"; };
 		E9A4911A20A9C2D700ECDE0E /* TapleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapleController.swift; sourceTree = "<group>"; };
+		E9CB193020B2D20B004327C2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E9CB193220B3342D004327C2 /* StatusBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatusBar+Extension.swift"; sourceTree = "<group>"; };
 		E9DABC6B20A35BBD0063F095 /* DropDownBtProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownBtProtocol.swift; sourceTree = "<group>"; };
 		E9DABC6C20A35BBD0063F095 /* DrDwnBtnContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrDwnBtnContentView.swift; sourceTree = "<group>"; };
 		E9DABC6D20A35BBE0063F095 /* DropDownBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownBtn.swift; sourceTree = "<group>"; };
-		E9DABC7120A35BCF0063F095 /* ViewController_2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController_2.swift; sourceTree = "<group>"; };
 		E9DABC7520A35BEB0063F095 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		E9DABC7720A35C040063F095 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		E9DABC7920A35C0B0063F095 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		E9F1943520AA0B5700193721 /* SegueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueProtocol.swift; sourceTree = "<group>"; };
 		F7D500DB0F3FF9092C3BB395 /* Pods_StickyHeader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StickyHeader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8E1D333EF888B6A78889298 /* Pods-StickyHeader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StickyHeader.release.xcconfig"; path = "Pods/Target Support Files/Pods-StickyHeader/Pods-StickyHeader.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +135,7 @@
 				E9686C2820A5AA9700DF583B /* UIImage+Extension.swift */,
 				E9686C2620A5AA4200DF583B /* UITabBarController+Extension.swift */,
 				E9686C2420A5A9D700DF583B /* UIView+Extension.swift */,
+				E9CB193220B3342D004327C2 /* StatusBar+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -145,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				E9DABC6B20A35BBD0063F095 /* DropDownBtProtocol.swift */,
-				E9F1943520AA0B5700193721 /* SegueProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -163,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				E9DABC7720A35C040063F095 /* ProductCell.swift */,
-				E9686C2D20A5EC0B00DF583B /* ProductCell2.swift */,
 				57A5150D1D8C4EFE001538BB /* CustomHeaderView.swift */,
 				E9B3751620A368CD00E362CB /* DropDownBtView */,
 				E9686C2020A5A79300DF583B /* LoginView.swift */,
@@ -177,7 +174,6 @@
 			children = (
 				E9A5256C20A448800068CF4F /* Protocol */,
 				E9A4911A20A9C2D700ECDE0E /* TapleController.swift */,
-				E9DABC7120A35BCF0063F095 /* ViewController_2.swift */,
 				E9DABC7520A35BEB0063F095 /* MainTabBarController.swift */,
 				57A514FD1D8C4E79001538BB /* UserController.swift */,
 				E9686C2220A5A7D600DF583B /* LoginController.swift */,
@@ -192,6 +188,7 @@
 			children = (
 				E9DABC7920A35C0B0063F095 /* Product.swift */,
 				E9686C2F20A5F08900DF583B /* About.swift */,
+				E9CB193020B2D20B004327C2 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -340,18 +337,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9DABC7220A35BCF0063F095 /* ViewController_2.swift in Sources */,
 				E96F16AD20A815DD00BA24EB /* GMapsController.swift in Sources */,
 				E9DABC7620A35BEC0063F095 /* MainTabBarController.swift in Sources */,
 				E9686C2320A5A7D600DF583B /* LoginController.swift in Sources */,
 				E9DABC7020A35BBE0063F095 /* DropDownBtn.swift in Sources */,
-				E9F1943620AA0B5700193721 /* SegueProtocol.swift in Sources */,
 				E91AEA1320A8AB870087D417 /* NotesController.swift in Sources */,
-				E9686C2E20A5EC0B00DF583B /* ProductCell2.swift in Sources */,
 				57A514FE1D8C4E79001538BB /* UserController.swift in Sources */,
 				E9DABC7A20A35C0B0063F095 /* Product.swift in Sources */,
 				E9686C3020A5F08900DF583B /* About.swift in Sources */,
 				E9686C2120A5A79300DF583B /* LoginView.swift in Sources */,
+				E9CB193320B3342D004327C2 /* StatusBar+Extension.swift in Sources */,
 				E9686C2720A5AA4200DF583B /* UITabBarController+Extension.swift in Sources */,
 				E9686C2520A5A9D700DF583B /* UIView+Extension.swift in Sources */,
 				57A5150E1D8C4EFE001538BB /* CustomHeaderView.swift in Sources */,
@@ -362,6 +357,7 @@
 				E9686C2C20A5CB9500DF583B /* SegmentedControlView.swift in Sources */,
 				E9DABC6E20A35BBE0063F095 /* DropDownBtProtocol.swift in Sources */,
 				57A514FC1D8C4E79001538BB /* AppDelegate.swift in Sources */,
+				E9CB193120B2D20B004327C2 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
