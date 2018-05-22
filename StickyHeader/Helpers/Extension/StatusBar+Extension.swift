@@ -2,7 +2,7 @@
 import UIKit
 
 /**
- Позволяет задавать цвет для statusbar`a для каждого контроллера одной строчкой кода:
+ Задать цвет для statusbar`a 
  UIApplication.shared.statusBarView?.backgroundColor = .red
  **/
 

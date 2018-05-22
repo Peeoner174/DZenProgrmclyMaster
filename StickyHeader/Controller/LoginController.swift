@@ -10,23 +10,6 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
-        let url = "http://139.59.139.197:8001/pavelk/user/0/"
-    
-        Alamofire.request(url, method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                if json.dictionary!["success"] == true
-                {print(json.dictionary!["data"]!)                                                          }
-                    else {
-                        let noFoundEr = json.dictionary!["message"]
-                        print(noFoundEr!)
-                    }
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
     
     func setupView() {

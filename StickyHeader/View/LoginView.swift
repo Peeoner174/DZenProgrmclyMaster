@@ -139,7 +139,7 @@ class LoginView: UIView {
             button.translatesAutoresizingMaskIntoConstraints = false
             button.setTitle("Войти", for: UIControlState.normal)
             button.setTitleColor(UIColor.white, for: UIControlState.normal)
-            button.backgroundColor = UIColor(red: 250/255, green: 97/255, blue: 80/255, alpha: 1)
+            button.backgroundColor = UIColor.customMainRedColor
             button.addTarget(self, action: #selector(handleSignup), for: .touchUpInside)
             return button
         }()
@@ -161,7 +161,7 @@ class LoginView: UIView {
             button.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.setTitle("ЗАРЕГЕСТРИРОВАТЬСЯ", for: UIControlState.normal)
-            button.setTitleColor(UIColor(red: 250/255, green: 97/255, blue: 80/255, alpha: 1), for: UIControlState.normal)
+            button.setTitleColor(UIColor.customMainRedColor, for: UIControlState.normal)
             button.sizeToFit()
             button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
             return button

@@ -1,75 +1,90 @@
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 
 class NotesController: UITableViewController {
     
-    var courses = [Course]()
-    
+    var abouts = [Note]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Course List"
-        fetchJSON()
+        navigationItem.title = "Заметки"
+        createAboutArray()
         
     }
-    
-    struct Course: Decodable {
-        let id: Int
-        let name: String
-        let link: String
-        
-        //        let number_of_lessons: Int
-        let numberOfLessons: Int
-        let imageUrl: String
-        
-        // swift 4.0
-        private enum CodingKeys: String, CodingKey {
-            case imageUrl = "image_url"
-            case numberOfLessons = "number_of_lessons"
-            case id, name, link
-        }
-    }
-    
-    fileprivate func fetchJSON() {
-        let urlString = "http://api.letsbuildthatapp.com/jsondecodable/courses_snake_case"
-        guard let url = URL(string: urlString) else { return }
-        URLSession.shared.dataTask(with: url) { (data, _, err) in
-            DispatchQueue.main.async {
-                if let err = err {
-                    print("Failed to get data from url:", err)
-                    return
-                }
-                
-                guard let data = data else { return }
-                
-                do {
-                    // link in description for video on JSONDecoder
-                    let decoder = JSONDecoder()
-                    // Swift 4.1
-                    // decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    self.courses = try decoder.decode([Course].self, from: data)
-                    self.tableView.reloadData()
-                } catch let jsonErr {
-                    print("Failed to decode:", jsonErr)
-                }
-            }
-            }.resume()
-    }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return courses.count
+        return abouts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
-        let course = courses[indexPath.row]
-        cell.textLabel?.text = course.name
-        cell.detailTextLabel?.text = String(course.numberOfLessons)
+        let note = abouts[indexPath.row]
+        cell.textLabel?.text = note.title
+        cell.detailTextLabel?.text = note.note_text
+        
+        //Колличество строк detailTextLabel определяется размером контента
+        cell.detailTextLabel?.lineBreakMode = .byWordWrapping
+        cell.detailTextLabel?.numberOfLines = 0
+        
         cell.detailTextLabel?.textColor = UIColor.lightGray
         cell.detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    
+//    func createAboutArray(){
+//        abouts.append(About(id: "1", title: "1123", note_text: "123"))
+//        abouts.append(About(id: "1", title: "1123", note_text: "123"))
+//        abouts.append(About(id: "1", title: "1123", note_text: "123"))
+
+
+        func createAboutArray() {
+            
+            let url = "http://139.59.139.197:8001/pavelk/note/note1/"
+            
+            Alamofire.request(url, method: .get).validate().responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    
+                    if json.dictionary!["success"] == true
+                    {var data = json.dictionary!["data"]!
+                        data = data["notes"]
+                        
+                        do {
+                            let rawData = try data.rawData()
+                            do {
+                                let decoder = JSONDecoder()
+                                self.abouts = try decoder.decode([Note].self, from: rawData)
+                                self.tableView.reloadData()
+                                
+                            } catch let jsonErr {
+                                print("Failed to decode user:", jsonErr)
+                            }
+                        } catch {
+                            print("Error raw data user \(error)")
+                        }
+                    }
+                    else {
+                        print(json.dictionary!["message"]!)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            
+        }
+        
+    
+
+    
 }
+

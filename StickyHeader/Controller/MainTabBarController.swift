@@ -16,12 +16,13 @@ class MainTabBarController: UITabBarController {
         
         
         //Наполнение
-        let oneController = createNavController(vc: GmapsController(), image_icon: #imageLiteral(resourceName: "ic_ios_place"), title: "123")
-        let twoController = createNavController(vc: UserController(), image_icon: #imageLiteral(resourceName: "ic_ios_art_track"), title: "456")
-        let threeController = createNavController(vc: TapleController(), image_icon: #imageLiteral(resourceName: "ic_ios_place"), title: "789")
-      
+        let oneController = createNavController(vc: GmapsController(), image_icon: #imageLiteral(resourceName: "ic_ios_place"), title: "Карта")
+        let twoController = createNavController(vc: NotesController(), image_icon: #imageLiteral(resourceName: "ic_ios_art_track"), title: "Заметки")
+        let threeController = createNavController(vc: GalleryController(collectionViewLayout: UICollectionViewFlowLayout()), image_icon: #imageLiteral(resourceName: "ic_ios_place"), title: "Галерея")
+        let fourController = createNavController(vc: TapleController(), image_icon: #imageLiteral(resourceName: "ic_ios_place"), title: "Лента")
+        let fiveController = createNavController(vc: UserController(), image_icon: #imageLiteral(resourceName: "ic_ios_place"), title: "Профиль")
         
-        viewControllers = [oneController, twoController, threeController]
+        viewControllers = [oneController, twoController, threeController, fourController, fiveController]
         
         //Регулировка расположения элементов таб-бара
         guard let items = tabBar.items else { return }

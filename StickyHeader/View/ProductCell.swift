@@ -15,13 +15,17 @@ class ProductCell : UITableViewCell {
     
     var product : Product? {
         didSet {
+            guard let productPhoto = product?.photo else { return }
             do{
-            productImage.af_setImage(withURL: try (product?.photo.asURL())!)
+            productImage.af_setImage(withURL: try (productPhoto.asURL()))
             }catch let loadImageEr{print("loadImageEr", loadImageEr)}
+            
             productNameLabel.text = product?.title
             productDescriptionLabel.text = product?.date
+            
+            guard let productUser = product?.user_image else { return }
             do{
-            userImage.af_setImage(withURL: try (product?.user_image.asURL())!)
+            userImage.af_setImage(withURL: try (productUser.asURL()))
             }catch let loadImageEr{print("loadImageEr", loadImageEr)}
         }
     }
@@ -138,8 +142,6 @@ class ProductCell : UITableViewCell {
             userImage.heightAnchor.constraint(equalToConstant: 20)
         ]
         NSLayoutConstraint.activate(constraints)
-        
-
     }
     
     func setDropDownButton(){
@@ -148,10 +150,6 @@ class ProductCell : UITableViewCell {
         //Задание внешнего вида кнопки
         button.setImage(UIImage(named: "more"), for: .normal)
        
-        if buttonEvent == true {
-            print("Presssed")
-        }        //buttonEvent = button.dropDownPressed(rowMenu: 0)
-        
         //Когда констрейнты задаются в коде нужно ставить false
         button.translatesAutoresizingMaskIntoConstraints = false
         

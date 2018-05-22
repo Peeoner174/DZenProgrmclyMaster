@@ -21,9 +21,14 @@
 		E9686C2720A5AA4200DF583B /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9686C2620A5AA4200DF583B /* UITabBarController+Extension.swift */; };
 		E9686C2920A5AA9700DF583B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9686C2820A5AA9700DF583B /* UIImage+Extension.swift */; };
 		E9686C2C20A5CB9500DF583B /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9686C2B20A5CB9500DF583B /* SegmentedControlView.swift */; };
-		E9686C3020A5F08900DF583B /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9686C2F20A5F08900DF583B /* About.swift */; };
+		E9686C3020A5F08900DF583B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9686C2F20A5F08900DF583B /* Note.swift */; };
 		E96F16AD20A815DD00BA24EB /* GMapsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96F16AC20A815DD00BA24EB /* GMapsController.swift */; };
 		E9A4911B20A9C2D700ECDE0E /* TapleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A4911A20A9C2D700ECDE0E /* TapleController.swift */; };
+		E9AACEA220B3AFB50040319C /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AACEA120B3AFB50040319C /* UIColor+extension.swift */; };
+		E9AACEA420B3B0300040319C /* GalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AACEA320B3B0300040319C /* GalleryController.swift */; };
+		E9AACEA620B3B0570040319C /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AACEA520B3B0570040319C /* Gallery.swift */; };
+		E9AACEA820B3B06C0040319C /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AACEA720B3B06C0040319C /* GalleryCell.swift */; };
+		E9AACEAA20B3B0880040319C /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AACEA920B3B0880040319C /* PhotoController.swift */; };
 		E9CB193120B2D20B004327C2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB193020B2D20B004327C2 /* User.swift */; };
 		E9CB193320B3342D004327C2 /* StatusBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB193220B3342D004327C2 /* StatusBar+Extension.swift */; };
 		E9DABC6E20A35BBE0063F095 /* DropDownBtProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DABC6B20A35BBD0063F095 /* DropDownBtProtocol.swift */; };
@@ -51,9 +56,14 @@
 		E9686C2620A5AA4200DF583B /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		E9686C2820A5AA9700DF583B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		E9686C2B20A5CB9500DF583B /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
-		E9686C2F20A5F08900DF583B /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
+		E9686C2F20A5F08900DF583B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E96F16AC20A815DD00BA24EB /* GMapsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMapsController.swift; sourceTree = "<group>"; };
 		E9A4911A20A9C2D700ECDE0E /* TapleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapleController.swift; sourceTree = "<group>"; };
+		E9AACEA120B3AFB50040319C /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		E9AACEA320B3B0300040319C /* GalleryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryController.swift; sourceTree = "<group>"; };
+		E9AACEA520B3B0570040319C /* Gallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
+		E9AACEA720B3B06C0040319C /* GalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		E9AACEA920B3B0880040319C /* PhotoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
 		E9CB193020B2D20B004327C2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E9CB193220B3342D004327C2 /* StatusBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatusBar+Extension.swift"; sourceTree = "<group>"; };
 		E9DABC6B20A35BBD0063F095 /* DropDownBtProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownBtProtocol.swift; sourceTree = "<group>"; };
@@ -136,6 +146,7 @@
 				E9686C2620A5AA4200DF583B /* UITabBarController+Extension.swift */,
 				E9686C2420A5A9D700DF583B /* UIView+Extension.swift */,
 				E9CB193220B3342D004327C2 /* StatusBar+Extension.swift */,
+				E9AACEA120B3AFB50040319C /* UIColor+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -161,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				E9DABC7720A35C040063F095 /* ProductCell.swift */,
+				E9AACEA720B3B06C0040319C /* GalleryCell.swift */,
 				57A5150D1D8C4EFE001538BB /* CustomHeaderView.swift */,
 				E9B3751620A368CD00E362CB /* DropDownBtView */,
 				E9686C2020A5A79300DF583B /* LoginView.swift */,
@@ -172,6 +184,8 @@
 		E9B3751820A3696900E362CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E9AACEA920B3B0880040319C /* PhotoController.swift */,
+				E9AACEA320B3B0300040319C /* GalleryController.swift */,
 				E9A5256C20A448800068CF4F /* Protocol */,
 				E9A4911A20A9C2D700ECDE0E /* TapleController.swift */,
 				E9DABC7520A35BEB0063F095 /* MainTabBarController.swift */,
@@ -187,8 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				E9DABC7920A35C0B0063F095 /* Product.swift */,
-				E9686C2F20A5F08900DF583B /* About.swift */,
+				E9686C2F20A5F08900DF583B /* Note.swift */,
 				E9CB193020B2D20B004327C2 /* User.swift */,
+				E9AACEA520B3B0570040319C /* Gallery.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,19 +359,24 @@
 				E91AEA1320A8AB870087D417 /* NotesController.swift in Sources */,
 				57A514FE1D8C4E79001538BB /* UserController.swift in Sources */,
 				E9DABC7A20A35C0B0063F095 /* Product.swift in Sources */,
-				E9686C3020A5F08900DF583B /* About.swift in Sources */,
+				E9686C3020A5F08900DF583B /* Note.swift in Sources */,
 				E9686C2120A5A79300DF583B /* LoginView.swift in Sources */,
 				E9CB193320B3342D004327C2 /* StatusBar+Extension.swift in Sources */,
 				E9686C2720A5AA4200DF583B /* UITabBarController+Extension.swift in Sources */,
+				E9AACEA820B3B06C0040319C /* GalleryCell.swift in Sources */,
 				E9686C2520A5A9D700DF583B /* UIView+Extension.swift in Sources */,
 				57A5150E1D8C4EFE001538BB /* CustomHeaderView.swift in Sources */,
 				E9686C2920A5AA9700DF583B /* UIImage+Extension.swift in Sources */,
 				E9DABC6F20A35BBE0063F095 /* DrDwnBtnContentView.swift in Sources */,
 				E9A4911B20A9C2D700ECDE0E /* TapleController.swift in Sources */,
+				E9AACEA620B3B0570040319C /* Gallery.swift in Sources */,
 				E9DABC7820A35C040063F095 /* ProductCell.swift in Sources */,
+				E9AACEA420B3B0300040319C /* GalleryController.swift in Sources */,
 				E9686C2C20A5CB9500DF583B /* SegmentedControlView.swift in Sources */,
 				E9DABC6E20A35BBE0063F095 /* DropDownBtProtocol.swift in Sources */,
+				E9AACEA220B3AFB50040319C /* UIColor+extension.swift in Sources */,
 				57A514FC1D8C4E79001538BB /* AppDelegate.swift in Sources */,
+				E9AACEAA20B3B0880040319C /* PhotoController.swift in Sources */,
 				E9CB193120B2D20B004327C2 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

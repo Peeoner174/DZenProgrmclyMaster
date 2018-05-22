@@ -1,7 +1,7 @@
 
 import UIKit
 
-struct About : Decodable {
+struct Note : Decodable {
     
     var id : String
     var title : String

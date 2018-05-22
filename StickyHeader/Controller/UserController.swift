@@ -9,7 +9,7 @@ class UserController: UIViewController {
     let cellId2 = "cellId2"
     
     var products : [Product]  = [Product]()
-    var abouts : [About] = [About]()
+    var abouts : [Note] = [Note]()
     var user : User!
    
     var segmentControl: SegmentedControlView!
@@ -33,10 +33,10 @@ class UserController: UIViewController {
         createProductArray()
         setUpTableView()
     }
-
+    
     func setUpHeader() {
         headerView = CustomHeaderView(frame: CGRect.zero, title: "user page")
-       // headerView.user = user
+        
         //Должен быть false, если констреинты описаны в коде
         headerView.translatesAutoresizingMaskIntoConstraints = false
         //Добавление элемента в viewController
@@ -148,7 +148,18 @@ extension UserController:UIScrollViewDelegate {
             self.headerHeightConstraint.constant += abs(scrollView.contentOffset.y) //изменение размера
             headerView.incrementColorAlpha(self.headerHeightConstraint.constant) //Цвет
             headerView.incrementArticleAlpha(self.headerHeightConstraint.constant) //Картинка
-            self.headerView.imageView.image = UIImage(named: "userBackground")
+            
+            guard let userMainPhoto = user?.main_photo else {return}
+            do{
+                self.headerView.imageView.af_setImage(withURL: try (userMainPhoto.asURL()))
+            }catch let loadImageEr{print("loadImageEr", loadImageEr)}
+            
+            guard let userAvatar = user?.avatar else {return}
+            do{
+                self.headerView.articleIcon.af_setImage(withURL: try (userAvatar.asURL()))
+            }catch let loadImageEr{print("loadImageEr", loadImageEr)}
+            
+            //self.headerView.imageView.af_setImage(withURL: <#T##URL#>) = UIImage(named: "userBackground")
 
             //Задание максимального размера header`a
             if self.headerHeightConstraint.constant > 200{
@@ -167,7 +178,18 @@ extension UserController:UIScrollViewDelegate {
                self.headerView.imageView.image = UIImage(named: "Bez_imeni")
             }
             if self.headerHeightConstraint.constant > 65 {
-                self.headerView.imageView.image = UIImage(named: "userBackground")
+                
+                guard let userMainPhoto = user?.main_photo else {return}
+                do{
+                    self.headerView.imageView.af_setImage(withURL: try (userMainPhoto.asURL()))
+                }catch let loadImageEr{print("loadImageEr", loadImageEr)}
+                
+                guard let userAvatar = user?.avatar else {return}
+                do{
+                    self.headerView.articleIcon.af_setImage(withURL: try (userAvatar.asURL()))
+                }catch let loadImageEr{print("loadImageEr", loadImageEr)}
+                
+                //self.headerView.imageView.image = UIImage(named: "userBackground")
             }
         }
     }

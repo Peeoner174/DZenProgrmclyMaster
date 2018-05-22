@@ -13,12 +13,15 @@ class TapleController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        UIApplication.shared.statusBarView?.backgroundColor = .red
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.customStatusBarColor
 
         
-        navigationItem.title = "Course List"
-        navigationController?.navigationBar.backgroundColor = UIColor.blue
+        navigationItem.title = "Лента"
+        navigationController?.navigationBar.backgroundColor = UIColor.customMainRedColor
 
+        navigationController?.navigationBar.titleTextAttributes
+            = [NSAttributedStringKey.foregroundColor: UIColor.white,
+               NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)]
         
         createProductArray()
         tableView.register(ProductCell.self, forCellReuseIdentifier: cellId)

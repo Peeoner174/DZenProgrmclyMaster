@@ -9,18 +9,6 @@ class CustomHeaderView: UIView {
     var bgColor = UIColor(red: 235/255, green: 96/255, blue: 91/255, alpha: 1)
     var titleLabel = UILabel()
     var articleIcon:UIImageView!
-    
-//    var user : User?{
-//        didSet{
-//            do{
-//                imageView.af_setImage(withURL: try (user?.main_photo.asURL())!)
-//            }catch let loadImageEr{print("loadImageEr", loadImageEr)}
-//            do{
-//                articleIcon.af_setImage(withURL: try (user?.avatar.asURL())!)
-//            }catch let loadImageEr{print("loadImageEr", loadImageEr)}
-//
-//        }
-//    }
   
     init(frame:CGRect, title: String) {
         self.titleLabel.text = title.uppercased()
