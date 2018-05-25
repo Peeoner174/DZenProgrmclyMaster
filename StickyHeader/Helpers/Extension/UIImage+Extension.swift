@@ -6,7 +6,7 @@ import UIKit
  **/
 extension UIImage {
     func tint(with color: UIColor) -> UIImage {
-        
+        //
         //Изменение цвета иконок в коде
         var image = withRenderingMode(.alwaysTemplate)
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
