@@ -3,11 +3,9 @@ import UIKit
 import AlamofireImage
 
 class PhotoController: UIViewController {
-
     var photoImage = UIImageView()
     var imageName : String!
     
-        
     override func viewDidLoad() {
         super.viewDidLoad()
         setPhotoIV(imageName: imageName)

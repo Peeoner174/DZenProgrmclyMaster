@@ -4,7 +4,7 @@
 
 protocol DropDownBtProtocol {
  
-    func dropDownPressed(rowMenu: Int) -> Bool
+    func dropDownPressed(rowMenu: Int) 
    
 
 }

@@ -36,7 +36,7 @@ class LoginView: UIView {
     func setLogoIV() {
         logoImageView = {
             let imageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
-            //enables autolayout
+            // Включить автолейаут
             imageView.translatesAutoresizingMaskIntoConstraints = false
             return imageView
         }()

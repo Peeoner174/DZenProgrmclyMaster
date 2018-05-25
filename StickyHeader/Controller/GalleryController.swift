@@ -8,9 +8,6 @@ class GalleryController: UICollectionViewController, UICollectionViewDelegateFlo
 
     let cellId = "cellId"
     
-//    var photos = [Gallery(url: "one", name: "1"),
-//                 Gallery(url: "two", name: "2"),
-//              ]
      var photos : [Gallery] = [Gallery]()
     
     override func viewDidLoad() {
@@ -18,17 +15,32 @@ class GalleryController: UICollectionViewController, UICollectionViewDelegateFlo
         
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.customStatusBarColor
         
+            navigationController?.navigationBar.backgroundColor = UIColor.customMainRedColor
+        
         collectionView?.backgroundColor = UIColor.white
         
         navigationItem.title = "Photo"
         loadGallery()
         
-        navigationController?.navigationBar.backgroundColor = UIColor.customMainRedColor
+        let rightBarButtonItem = UIBarButtonItem(title: "Назад", style: .done, target: self, action: #selector(addTapped))
+        rightBarButtonItem.tintColor = UIColor.white
+        
+        navigationItem.leftBarButtonItem = rightBarButtonItem
+
+
+        
 
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
              NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)]
         
         collectionView?.register(GalleryCell.self, forCellWithReuseIdentifier: cellId)
+    }
+    
+    @objc func addTapped() {
+        
+        
+        present(MainTabBarController(), animated: true, completion: nil)
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -67,7 +79,7 @@ class GalleryController: UICollectionViewController, UICollectionViewDelegateFlo
 
     func loadGallery(){
         
-        let url = "http://139.59.139.197:8001/pavelk/gallery/beatch/"
+        let url = "http://139.59.139.197:8001/pavelk/gallery/cream/"
         
         Alamofire.request(url, method: .get).validate().responseJSON { response in
             switch response.result {

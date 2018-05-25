@@ -7,20 +7,13 @@ public extension UIColor {
         self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
     }
     
-    static var customLightBlueColor: UIColor = {
-        return UIColor(r: 44, g: 57, b: 95)
-    }()
-    
     static var customRedColor: UIColor = {
         return UIColor(r: 217, g: 48, b: 80)
     }()
     
-    static var customDarkBlueColor: UIColor = {
-        return UIColor(r: 11, g: 22, b: 53)
-    }()
-    
+    //red: 235/255, green: 96/255, blue: 91/255, alpha: 1)
     static var customMainRedColor: UIColor = {
-        return UIColor(r: 245, g: 72, b: 66)
+        return UIColor(r: 235, g: 96, b: 91)
     }()
     
     static var customStatusBarColor: UIColor = {

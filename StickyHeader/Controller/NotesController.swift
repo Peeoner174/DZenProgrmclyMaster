@@ -10,9 +10,26 @@ class NotesController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
+         UIApplication.shared.statusBarView?.backgroundColor = UIColor.customStatusBarColor
+       
         navigationItem.title = "Заметки"
+        
+        navigationController?.navigationBar.backgroundColor = UIColor.customMainRedColor
+        
+        let rightBarButtonItem = UIBarButtonItem(title: "Назад", style: .done, target: self, action: #selector(addTapped))
+        rightBarButtonItem.tintColor = UIColor.white
+        
+        navigationItem.leftBarButtonItem = rightBarButtonItem
+        
         createAboutArray()
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
+        NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)]
+        
+    }
+    
+    @objc func addTapped() {
+        present(MainTabBarController(), animated: true, completion: nil)
         
     }
 

@@ -9,6 +9,7 @@ class ProductCell : UITableViewCell {
     var button = DropDownBtn()
     var productNameLabel : UILabel!
     var productDescriptionLabel : UILabel!
+    var productCityLabel : UILabel!
     var  productImage : UIImageView!
     var userImage : UIImageView!
     var buttonEvent = true
@@ -20,8 +21,10 @@ class ProductCell : UITableViewCell {
             productImage.af_setImage(withURL: try (productPhoto.asURL()))
             }catch let loadImageEr{print("loadImageEr", loadImageEr)}
             
+            
             productNameLabel.text = product?.title
             productDescriptionLabel.text = product?.date
+            productCityLabel.text = product?.place
             
             guard let productUser = product?.user_image else { return }
             do{
@@ -35,9 +38,11 @@ class ProductCell : UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setProductImageIV()
         setProductNameL()
+        setProductCityLabel()
         setProductDescriptionL()
         setDropDownButton()
         setUserImageIV()
+     
         
         
       	
@@ -52,7 +57,7 @@ class ProductCell : UITableViewCell {
         productNameLabel = {
             let lbl = UILabel()
             lbl.textColor = .black
-            lbl.font = UIFont.boldSystemFont(ofSize: 16)
+            lbl.font = UIFont.boldSystemFont(ofSize: 14)
             lbl.textAlignment = .left
             
             return lbl
@@ -72,20 +77,40 @@ class ProductCell : UITableViewCell {
             , enableInsets: false)
     }
  ///
+    func setProductCityLabel()  {
+        productCityLabel = {
+            let lbl = UILabel()
+            lbl.textColor = .black
+            lbl.font = UIFont.systemFont(ofSize: 10)
+            lbl.textAlignment = .left
+            return lbl
+        }()
+        addSubview(productCityLabel)
+        
+        productCityLabel.anchor(top: productNameLabel.bottomAnchor
+            , left: productImage.rightAnchor
+            , bottom: nil, right: nil, paddingTop: 0
+            , paddingLeft: 10, paddingBottom: 0
+            , paddingRight: 0
+            , width: frame.size.width / 2
+            , height: 0
+            , enableInsets: false)
+    }
+ ///
     func setProductDescriptionL() {
         productDescriptionLabel = {
             let lbl = UILabel()
             lbl.textColor = .black
-            lbl.font = UIFont.systemFont(ofSize: 16)
+            lbl.font = UIFont.systemFont(ofSize: 12)
             lbl.textAlignment = .left
-            lbl.numberOfLines = 0
+          //  lbl.numberOfLines = 0
             
             return lbl
         }()
         //Добавление элемента в viewController
         addSubview(productDescriptionLabel)
         
-        productDescriptionLabel.anchor(top: productNameLabel.bottomAnchor
+        productDescriptionLabel.anchor(top: productCityLabel.bottomAnchor
             , left: productImage.rightAnchor
             , bottom: nil, right: nil, paddingTop: 0
             , paddingLeft: 10, paddingBottom: 0
@@ -99,6 +124,7 @@ class ProductCell : UITableViewCell {
         productImage = {
             let imgView = UIImageView()
             imgView.contentMode = .scaleAspectFill
+            
             
           
             imgView.clipsToBounds = true
@@ -124,7 +150,7 @@ class ProductCell : UITableViewCell {
         userImage = {
             let imgView = UIImageView()
            // imgView.contentMode = .scaleAspectFill
-            imgView.layer.cornerRadius = 10
+            imgView.layer.cornerRadius = 15
             imgView.layer.masksToBounds = true
               imgView.translatesAutoresizingMaskIntoConstraints = false
            // imgView.clipsToBounds = true
@@ -138,8 +164,8 @@ class ProductCell : UITableViewCell {
             userImage.leftAnchor.constraint(equalTo: productImage.rightAnchor, constant: 10),
             userImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             //Размеры
-            userImage.widthAnchor.constraint(equalToConstant: 20),
-            userImage.heightAnchor.constraint(equalToConstant: 20)
+            userImage.widthAnchor.constraint(equalToConstant: 30),
+            userImage.heightAnchor.constraint(equalToConstant: 30)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -152,6 +178,7 @@ class ProductCell : UITableViewCell {
        
         //Когда констрейнты задаются в коде нужно ставить false
         button.translatesAutoresizingMaskIntoConstraints = false
+        
         
         //Add Button to the View Controller
         addSubview(button)

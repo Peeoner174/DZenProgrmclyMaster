@@ -33,7 +33,14 @@ class TapleController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ProductCell
         let currentLastItem = products[indexPath.row]
         cell.product = currentLastItem
+        
         return cell
+    }
+    
+    func mAction()  {
+        print("sdasa")
+        let signUpVC = NotesController()
+        present(signUpVC, animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

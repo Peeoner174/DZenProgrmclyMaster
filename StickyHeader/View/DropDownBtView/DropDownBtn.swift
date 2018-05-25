@@ -7,7 +7,7 @@ import UIKit
 
 class DropDownBtn: UIButton, DropDownBtProtocol {
     
-      
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -15,19 +15,34 @@ class DropDownBtn: UIButton, DropDownBtProtocol {
         
         dropView = DrDwnBtnContentView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
         dropView.delegate = self
-        
+
         dropView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     //Выполняется когда какое-то из меню в drop-down было выбрано
-    func dropDownPressed(rowMenu: Int) -> Bool {
+    func dropDownPressed(rowMenu: Int)  {
         self.closeDropDown()
         print(rowMenu)
-
-        return true
-        //let signUpVC = MainTabBarController()
-       // super.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
+        
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            if rowMenu == 0{
+                let two = UINavigationController()
+                two.pushViewController(GalleryController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
+                topController.present(two, animated: true, completion: nil)
+            }
+            else {
+                let one = UINavigationController()
+                one.pushViewController(NotesController(), animated: true)
+                topController.present(one, animated: true, completion: nil)
+            }
+            
+        }
+    
     }
+    
     
 
     
