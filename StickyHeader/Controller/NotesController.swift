@@ -6,40 +6,27 @@ import SwiftyJSON
 
 class NotesController: UITableViewController {
     
-    var abouts = [Note]()
+    var notes = [Note]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.customStatusBarColor
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         UIApplication.shared.statusBarView?.backgroundColor = UIColor.customStatusBarColor
-       
-        navigationItem.title = "Заметки"
-        
-        navigationController?.navigationBar.backgroundColor = UIColor.customMainRedColor
-        
-        let rightBarButtonItem = UIBarButtonItem(title: "Назад", style: .done, target: self, action: #selector(addTapped))
-        rightBarButtonItem.tintColor = UIColor.white
-        
-        navigationItem.leftBarButtonItem = rightBarButtonItem
-        
-        createAboutArray()
-        
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
-        NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)]
-        
-    }
-    
-    @objc func addTapped() {
-        present(MainTabBarController(), animated: true, completion: nil)
-        
+        setTabBar()
+
+        loadNotes()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return abouts.count
+        return notes.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
-        let note = abouts[indexPath.row]
+        let note = notes[indexPath.row]
         cell.textLabel?.text = note.title
         cell.detailTextLabel?.text = note.note_text
         
@@ -56,14 +43,7 @@ class NotesController: UITableViewController {
         return UITableViewAutomaticDimension
     }
     
-    
-//    func createAboutArray(){
-//        abouts.append(About(id: "1", title: "1123", note_text: "123"))
-//        abouts.append(About(id: "1", title: "1123", note_text: "123"))
-//        abouts.append(About(id: "1", title: "1123", note_text: "123"))
-
-
-        func createAboutArray() {
+    func loadNotes() {
             
             let url = "http://139.59.139.197:8001/pavelk/note/note1/"
             
@@ -80,7 +60,7 @@ class NotesController: UITableViewController {
                             let rawData = try data.rawData()
                             do {
                                 let decoder = JSONDecoder()
-                                self.abouts = try decoder.decode([Note].self, from: rawData)
+                                self.notes = try decoder.decode([Note].self, from: rawData)
                                 self.tableView.reloadData()
                                 
                             } catch let jsonErr {
@@ -100,8 +80,25 @@ class NotesController: UITableViewController {
             
         }
         
-    
+    func setTabBar()  {
+        navigationItem.title = "Заметки"
+        navigationController?.navigationBar.backgroundColor = UIColor.customMainRedColor
+        
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)
+        ]
+        
+        navigationItem.leftBarButtonItem = {
+            let leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .done, target: self, action: #selector(backTapped))
+            leftBarButtonItem.tintColor = UIColor.white
+            return leftBarButtonItem
+        }()
+    }
 
-    
+    @objc func backTapped() {
+        present(MainTabBarController(), animated: true, completion: nil)
+        
+    }
 }
 

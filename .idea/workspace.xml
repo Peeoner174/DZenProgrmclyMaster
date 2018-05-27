@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0730e979-eb86-4683-99ae-cd17b585b6e4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/StickyHeader/Controller/UserController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/StickyHeader/Controller/UserController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StickyHeader/View/ProductCell2.swift" beforeDir="false" afterPath="$PROJECT_DIR$/StickyHeader/View/ProductCell2.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StickyHeader/Helpers/Extension/UIImage+Extension.swift" beforeDir="false" afterPath="$PROJECT_DIR$/StickyHeader/Helpers/Extension/UIImage+Extension.swift" afterDir="false" />
     </list>
     <ignored path="$USER_HOME$/Library/Developer/Xcode/DerivedData/StickyHeader-fuaxxtvgcebpstgfndexrtfqxjtp/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,16 +14,15 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_8080DB9E-CFE3-4442-9762-4681512ECA2B" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="35" />
     <option name="y" value="23" />
-    <option name="width" value="1366" />
-    <option name="height" value="689" />
+    <option name="width" value="1364" />
+    <option name="height" value="682" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -47,8 +45,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Cidr.FilesView" />
       <pane id="Scope" />
+      <pane id="Cidr.FilesView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -83,27 +81,27 @@
       <workItem from="1525677554660" duration="556000" />
       <workItem from="1525697065064" duration="141000" />
       <workItem from="1526058006594" duration="1043000" />
+      <workItem from="1527238912162" duration="94000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1740000" />
+    <option name="totallyTimeSpent" value="1834000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="35" y="23" width="1366" height="689" extended-state="0" />
+    <frame x="0" y="23" width="1364" height="682" extended-state="0" />
     <layout>
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24981412" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24944155" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3310811" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3310811" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -111,6 +109,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Messages" order="7" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">

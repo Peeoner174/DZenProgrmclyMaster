@@ -3,24 +3,20 @@ import UIKit
 import AlamofireImage
 
 class ProductCell : UITableViewCell {
-    let minValue = 0
-    
     
     var button = DropDownBtn()
     var productNameLabel : UILabel!
     var productDescriptionLabel : UILabel!
     var productCityLabel : UILabel!
-    var  productImage : UIImageView!
+    var productImage : UIImageView!
     var userImage : UIImageView!
-    var buttonEvent = true
     
     var product : Product? {
         didSet {
             guard let productPhoto = product?.photo else { return }
             do{
             productImage.af_setImage(withURL: try (productPhoto.asURL()))
-            }catch let loadImageEr{print("loadImageEr", loadImageEr)}
-            
+            }catch let loadImageEr{print("Ошибка загрузки основного фото(ProductCell) ", loadImageEr)}
             
             productNameLabel.text = product?.title
             productDescriptionLabel.text = product?.date
@@ -33,7 +29,6 @@ class ProductCell : UITableViewCell {
         }
     }
     
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setProductImageIV()
@@ -42,10 +37,6 @@ class ProductCell : UITableViewCell {
         setProductDescriptionL()
         setDropDownButton()
         setUserImageIV()
-     
-        
-        
-      	
     }
     
     required init?(coder aDecoder: NSCoder) {

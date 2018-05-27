@@ -6,41 +6,22 @@ import SwiftyJSON
 
 class GalleryController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    let cellId = "cellId"
+     let cellId = "cellId"
     
      var photos : [Gallery] = [Gallery]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.customStatusBarColor
-        
-            navigationController?.navigationBar.backgroundColor = UIColor.customMainRedColor
-        
-        collectionView?.backgroundColor = UIColor.white
-        
-        navigationItem.title = "Photo"
-        loadGallery()
-        
-        let rightBarButtonItem = UIBarButtonItem(title: "Назад", style: .done, target: self, action: #selector(addTapped))
-        rightBarButtonItem.tintColor = UIColor.white
-        
-        navigationItem.leftBarButtonItem = rightBarButtonItem
-
-
-        
-
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
-             NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)]
-        
-        collectionView?.register(GalleryCell.self, forCellWithReuseIdentifier: cellId)
     }
     
-    @objc func addTapped() {
-        
-        
-        present(MainTabBarController(), animated: true, completion: nil)
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setTabBar()
+
+        loadGallery()
+ 
+        collectionView?.register(GalleryCell.self, forCellWithReuseIdentifier: cellId)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -76,7 +57,6 @@ class GalleryController: UICollectionViewController, UICollectionViewDelegateFlo
         
     }
     
-
     func loadGallery(){
         
         let url = "http://139.59.139.197:8001/pavelk/gallery/cream/"
@@ -111,6 +91,27 @@ class GalleryController: UICollectionViewController, UICollectionViewDelegateFlo
                 print(error)
             }
         }
+    }
+    
+    func setTabBar(){
+        navigationController?.navigationBar.backgroundColor = UIColor.customMainRedColor
+        navigationItem.title = "Photo"
+        
+        collectionView?.backgroundColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)
+        ]
+        
+        navigationItem.leftBarButtonItem = {
+            let leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .done, target: self, action: #selector(backTapped))
+            leftBarButtonItem.tintColor = UIColor.white
+            return leftBarButtonItem
+        }()
+    }
+    
+    @objc func backTapped() {
+        present(MainTabBarController(), animated: true, completion: nil)
     }
     
 }

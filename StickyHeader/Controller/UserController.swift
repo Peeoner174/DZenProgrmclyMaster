@@ -9,13 +9,13 @@ class UserController: UIViewController {
     let cellId2 = "cellId2"
     
     var products : [Product]  = [Product]()
-    var abouts : [Note] = [Note]()
+    var notes : [Note] = [Note]()
     var user : User!
    
     var segmentControl: SegmentedControlView!
-    var tableView:UITableView!
-    var headerView:CustomHeaderView!
-    var headerHeightConstraint:NSLayoutConstraint!
+    var tableView: UITableView!
+    var headerView: CustomHeaderView!
+    var headerHeightConstraint: NSLayoutConstraint!
     
     override var prefersStatusBarHidden: Bool{
         get{
@@ -63,7 +63,6 @@ class UserController: UIViewController {
         }
         if segmentControl.segmentControl.selectedSegmentIndex == 1 {
            
-            
             self.tableView.reloadData()
         }
     }
@@ -104,8 +103,6 @@ class UserController: UIViewController {
         //Индетификатор для tableView
         tableView?.register(ProductCell.self, forCellReuseIdentifier: cellId)
     
-
-        
         /**
          UITableViewDataSource — набор методов, с помощью которых UITableView получает данные. Имеет три  обязательных метода:
          numberOfSectionsInTableView: — запрашивает количество секций, которые должны быть отображены;
@@ -159,8 +156,6 @@ extension UserController:UIScrollViewDelegate {
                 self.headerView.articleIcon.af_setImage(withURL: try (userAvatar.asURL()))
             }catch let loadImageEr{print("loadImageEr", loadImageEr)}
             
-            //self.headerView.imageView.af_setImage(withURL: <#T##URL#>) = UIImage(named: "userBackground")
-
             //Задание максимального размера header`a
             if self.headerHeightConstraint.constant > 200{
                 self.headerHeightConstraint.constant = 200
@@ -189,7 +184,6 @@ extension UserController:UIScrollViewDelegate {
                     self.headerView.articleIcon.af_setImage(withURL: try (userAvatar.asURL()))
                 }catch let loadImageEr{print("loadImageEr", loadImageEr)}
                 
-                //self.headerView.imageView.image = UIImage(named: "userBackground")
             }
         }
     }
@@ -270,14 +264,14 @@ extension UserController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if segmentControl.segmentControl.selectedSegmentIndex == 1 {
 
-            return 100}
-        else
-        {return UITableViewAutomaticDimension
+            return 100
+            
+        }
+        else{
+            return UITableViewAutomaticDimension
             
         }
     }
-    
-
     
     func createProductArray() {
         

@@ -7,8 +7,6 @@ import UIKit
 
 class DropDownBtn: UIButton, DropDownBtProtocol {
     
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

@@ -3,20 +3,17 @@ import UIKit
 import AlamofireImage
 
 class PhotoController: UIViewController {
-    var photoImage = UIImageView()
+    
+    var photoImage: UIImageView!
     var imageName : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setPhotoIV(imageName: imageName)
+        setNavBar()
         
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.customStatusBarColor
-        
-        navigationController?.navigationBar.tintColor = UIColor.white
-        
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
-             NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)]
         view.backgroundColor = UIColor.black
+        
+        setPhotoIV(imageName: imageName)
 }
     
     func setPhotoIV(imageName: String?) {
@@ -26,7 +23,7 @@ class PhotoController: UIViewController {
             
             do{
                 imageView.af_setImage(withURL: try (imageName!.asURL()))
-            }catch let loadImageEr{print("loadImageEr", loadImageEr)}
+            }catch let loadImageEr{print("Ошибка загрузки фото(PhotoController)", loadImageEr)}
             
             imageView.contentMode = .scaleAspectFit
             imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -43,5 +40,14 @@ class PhotoController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
 
+    func setNavBar(){
+
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)
+        ]
+    }
+    
     
 }

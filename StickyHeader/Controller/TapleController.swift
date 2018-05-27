@@ -3,29 +3,21 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class TapleController: UITableViewController {
-    
-    
+class TapleController: UITableViewController{
     let cellId = "cellId"
     var products : [Product]  = [Product]()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.customStatusBarColor
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.customStatusBarColor
-
+        setNavBar()
         
-        navigationItem.title = "Лента"
-        navigationController?.navigationBar.backgroundColor = UIColor.customMainRedColor
-
-        navigationController?.navigationBar.titleTextAttributes
-            = [NSAttributedStringKey.foregroundColor: UIColor.white,
-               NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)]
-        
-        createProductArray()
+        ProductDataLoader()
         tableView.register(ProductCell.self, forCellReuseIdentifier: cellId)
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,12 +29,6 @@ class TapleController: UITableViewController {
         return cell
     }
     
-    func mAction()  {
-        print("sdasa")
-        let signUpVC = NotesController()
-        present(signUpVC, animated: true, completion: nil)
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
     }
@@ -51,7 +37,7 @@ class TapleController: UITableViewController {
         return 100
     }
     
-    func createProductArray() {
+    func ProductDataLoader() {
         let url = "http://139.59.139.197:8001/pavelk/history/0/"
         
         Alamofire.request(url, method: .get).validate().responseJSON { response in
@@ -87,7 +73,14 @@ class TapleController: UITableViewController {
 
     }
     
-    
+    func setNavBar()  {
+        navigationItem.title = "Лента"
+        navigationController?.navigationBar.backgroundColor = UIColor.customMainRedColor
+        navigationController?.navigationBar.titleTextAttributes = [
+               NSAttributedStringKey.foregroundColor: UIColor.white,
+               NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20)
+        ]
+    }
     
 }
 

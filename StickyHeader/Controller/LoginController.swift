@@ -12,6 +12,7 @@ class LoginController: UIViewController {
         setupView()
     }
     
+    
     func setupView() {
         signView = {
             let imageView = LoginView()

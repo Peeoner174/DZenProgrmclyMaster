@@ -6,7 +6,7 @@ class CustomHeaderView: UIView {
 
     var imageView:UIImageView!
     var colorView:UIView!
-    var bgColor = UIColor(red: 235/255, green: 96/255, blue: 91/255, alpha: 1)
+    var bgColor = UIColor.customMainRedColor
     var titleLabel = UILabel()
     var articleIcon:UIImageView!
   

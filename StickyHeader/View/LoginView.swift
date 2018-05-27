@@ -40,6 +40,7 @@ class LoginView: UIView {
             imageView.translatesAutoresizingMaskIntoConstraints = false
             return imageView
         }()
+        
         //Добавление элемента в viewController
         addSubview(logoImageView)
         
